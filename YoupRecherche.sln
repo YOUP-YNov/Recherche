@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "MvcApplication1\WebAPI.csproj", "{9A6F1354-5057-40F9-AECE-BABDF27A73D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{9A6F1354-5057-40F9-AECE-BABDF27A73D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsWebAPI", "MvcApplication1.Tests\TestsWebAPI.csproj", "{0A48DC78-45C2-4E55-9AB6-01DDD859C93E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsWebAPI", "WebAPI.Tests\TestsWebAPI.csproj", "{0A48DC78-45C2-4E55-9AB6-01DDD859C93E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controler", "ClassLibrary1\Controler.csproj", "{5E59EDD3-6779-4C49-825E-76A54ABAF21B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controler", "Controler\Controler.csproj", "{5E59EDD3-6779-4C49-825E-76A54ABAF21B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

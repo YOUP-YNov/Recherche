@@ -1,0 +1,1 @@
+C:\Users\Troy\Documents\Visual Studio 2012\Projects\Expert1\Youp\WebAPI.Tests\obj\Debug\TestsWebAPI.csprojResolveAssemblyReference.cache
