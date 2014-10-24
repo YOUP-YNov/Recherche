@@ -8,6 +8,7 @@ namespace MvcApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        //commentaire
         public ActionResult Index()
         {
             return View();
