@@ -12,31 +12,49 @@ namespace MvcApplication1.Controllers
     {
 
         //Method InitializeConnection : Explicit
-        public void AddProfile()
+        public ElasticClient InitializeConnection()
         {
             //Saving Node
-            var node = new Uri("http://localhost:9200/");
+            var node = new Uri("http://martinleguillou.fr:1194/");
             //Saving Settings
             var settings = new ConnectionSettings(
                 node,
-                defaultIndex: "Youp"
+                defaultIndex: "youp"
             );
             //Starting Client
             var client = new ElasticClient(settings);
+            return client;
+        }
 
+        public void AddProfile(ElasticClient client)
+        {
+            //Add Flavien
             var PersonTest = new Profile();
-            PersonTest.Id = "1";
-            PersonTest.Firstname = "Flavien";
+            PersonTest.Id = "2";
+            PersonTest.Firstname = "Antoine";
             PersonTest.Lastname = "Geslin";
-
             var index = client.Index(PersonTest);
         }
 
+        public void SearchProfile(ElasticClient client)
+        {
+            //Search
+            var searchResults = client.Search<Profile>(s => s
+            .From(0)
+            .Size(10)
+            .Query(q => q
+            .Term(p => p.Firstname, "Flavien")
+                )   
+            );
+
+        }
 
         // GET api/values
         public IEnumerable<string> Get()
         {
-            AddProfile();
+            ElasticClient NewClient = InitializeConnection();
+            AddProfile(NewClient);
+            SearchProfile(NewClient);
             return new string[] { "value1", "value2" };
         }
 
