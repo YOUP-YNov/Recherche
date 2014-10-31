@@ -12,10 +12,10 @@ namespace MvcApplication1.Controllers
     {
 
         //Method InitializeConnection : Explicit
-        public void InitializeConnection()
+        public void AddProfile()
         {
             //Saving Node
-            var node = new Uri("http://localhost:9200");
+            var node = new Uri("http://localhost:9200/");
             //Saving Settings
             var settings = new ConnectionSettings(
                 node,
@@ -23,12 +23,20 @@ namespace MvcApplication1.Controllers
             );
             //Starting Client
             var client = new ElasticClient(settings);
+
+            var PersonTest = new Profile();
+            PersonTest.Id = "1";
+            PersonTest.Firstname = "Flavien";
+            PersonTest.Lastname = "Geslin";
+
+            var index = client.Index(PersonTest);
         }
 
 
-       /* // GET api/values
+        // GET api/values
         public IEnumerable<string> Get()
         {
+            AddProfile();
             return new string[] { "value1", "value2" };
         }
 
@@ -36,12 +44,6 @@ namespace MvcApplication1.Controllers
         public string Get(int id)
         {
             return "value";
-        }*/
-
-        // GET api/values/5
-        public string Get([FromUri]Profile id)
-        {
-            return "First name : " + id.Firstname + "Last name : " + id.Lastname;
         }
 
         // POST api/values
