@@ -17,14 +17,19 @@ namespace MvcApplication1.Controllers
         
         //Method InitializeConnection : Explicit
         public void InitializeConnection() {
-            //Saving node 
-            //Adress node differente exemple : http://mynode.example.com:8082/apiKey
-            var node = new Uri("http://mynode.example.com:8082/apiKey");
-            var connectionPool = new SniffingConnectionPool(new[] { node });
-            //Saving connection settings - localhost:9200
-            var config = new ConnectionConfiguration(connectionPool);
-            //Initializing new Client
-            var client = new ElasticsearchClient(config);
+
+            //Saving Node
+            var node = new Uri("http://localhost:9200");
+
+            //Saving Settings
+            var settings = new ConnectionSettings(
+                node,
+                defaultIndex: "my-application"
+            );
+
+            //Starting Client
+            var client = new ElasticClient(settings);
+
 
         }
 
