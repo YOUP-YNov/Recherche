@@ -10,35 +10,13 @@ namespace MvcApplication1.Controllers
 {
     public class ValuesController : ApiController
     {
-        public void AddProfile(ElasticClient client)
-        {
-            //Add Flavien
-            var PersonTest = new Profile();
-            PersonTest.Id = "2";
-            PersonTest.Firstname = "Antoine";
-            PersonTest.Lastname = "Geslin";
-            var index = client.Index(PersonTest);
-        }
-
-        public void SearchProfile(ElasticClient client)
-        {
-            //Search
-            var searchResults = client.Search<Profile>(s => s
-            .From(0)
-            .Size(10)
-            .Query(q => q
-            .Term(p => p.Firstname, "Flavien")
-                )   
-            );
-
-        }
-
         // GET api/values
         public IEnumerable<string> Get()
         {
+            Profile ProfilTest = new Profile();
             ElasticClient NewClient = YoupElasticSearch.InitializeConnection();
-            AddProfile(NewClient);
-            SearchProfile(NewClient);
+            ProfilTest.AddProfile(NewClient);
+            ProfilTest.SearchProfile(NewClient);
             return new string[] { "value1", "value2" };
         }
 
