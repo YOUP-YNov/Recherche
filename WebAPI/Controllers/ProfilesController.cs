@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MvcApplication1.Controllers
 {
-    public class Person
+    public class Profile
     {
         public string Id { get; set; }
         public string Firstname { get; set; }
