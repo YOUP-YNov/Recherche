@@ -13,6 +13,8 @@ namespace MvcApplication1.Controllers
     [Authorize(Roles = "Administrator")]
     public class ManagerController : Controller
     {
+
+        
         //Method InitializeConnection : Explicit
         public void InitializeConnection() {
             //Saving node 
@@ -25,6 +27,7 @@ namespace MvcApplication1.Controllers
             var client = new ElasticsearchClient(config);
 
         }
+
 
         //Method ReIndex : Explicit
         //Adding the ReIndex action. The action return a redirect to the index view.
