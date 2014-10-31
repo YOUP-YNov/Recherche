@@ -9,8 +9,7 @@ using Nest;
 
 namespace MvcApplication1.Controllers
 {
-    [Authorize(Roles = "Administrator")]
-    public class ManagerController : Controller
+    public class HomeController : Controller
     {        
         //Method InitializeConnection : Explicit
         public void InitializeConnection(){
@@ -20,7 +19,7 @@ namespace MvcApplication1.Controllers
             //Saving Settings
             var settings = new ConnectionSettings(
                 node,
-                defaultIndex: "my-application"
+                defaultIndex: "Youp"
             );
             //Starting Client
             var client = new ElasticClient(settings);
@@ -30,17 +29,15 @@ namespace MvcApplication1.Controllers
             PersonTest.Firstname = "Flavien";
             PersonTest.Lastname = "Geslin";
 
-            var index = client.Index(PersonTest);
+            var index = client.IndexAsync(PersonTest);
         }
    
         //Method ReIndex : Explicit
         //Adding the ReIndex action. The action return a redirect to the index view.
         public ActionResult Index()
         {
-           // InitializeConnection();
-
-
-            return RedirectToAction("Index");
+           InitializeConnection();
+           return View();
         }
 
     }
