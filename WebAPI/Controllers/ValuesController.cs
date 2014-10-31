@@ -10,22 +10,6 @@ namespace MvcApplication1.Controllers
 {
     public class ValuesController : ApiController
     {
-
-        //Method InitializeConnection : Explicit
-        public ElasticClient InitializeConnection()
-        {
-            //Saving Node
-            var node = new Uri("http://martinleguillou.fr:1194/");
-            //Saving Settings
-            var settings = new ConnectionSettings(
-                node,
-                defaultIndex: "youp"
-            );
-            //Starting Client
-            var client = new ElasticClient(settings);
-            return client;
-        }
-
         public void AddProfile(ElasticClient client)
         {
             //Add Flavien
@@ -52,7 +36,7 @@ namespace MvcApplication1.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            ElasticClient NewClient = InitializeConnection();
+            ElasticClient NewClient = YoupElasticSearch.InitializeConnection();
             AddProfile(NewClient);
             SearchProfile(NewClient);
             return new string[] { "value1", "value2" };
