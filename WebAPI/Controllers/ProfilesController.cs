@@ -17,28 +17,17 @@ namespace MvcApplication1.Controllers
         public int Age { get; set; }
         public bool Sex { get; set; }
 
-        public void AddProfile(ElasticClient client)
+        public void Profile(string _Id, string _Firstname, string _Lastname, string _Pseudo, string _Activity, int _Age, bool _Sex)
         {
-            //Add Flavien
-            var PersonTest = new Profile();
-            PersonTest.Id = "2";
-            PersonTest.Firstname = "Antoine";
-            PersonTest.Lastname = "Geslin";
-            var index = client.Index(PersonTest);
-
+            this.Id = _Id;
+            this.Firstname = _Firstname;
+            this.Lastname = _Lastname;
+            this.Pseudo = _Pseudo;
+            this.Activity = _Activity;
+            this.Age = _Age;
+            this.Sex = _Sex;
         }
 
-        public void SearchProfile(ElasticClient client)
-        {
-            //Search
-            var searchResults = client.Search<Profile>(s => s
-            .From(0)
-            .Size(10)
-            .Query(q => q
-            .Term(p => p.Firstname, "Flavien")
-                )
-            );
-        }
     }
     
 
@@ -46,6 +35,23 @@ namespace MvcApplication1.Controllers
     {
         //
         // GET: /Profiles/
+
+        public void AddProfile(ElasticClient client, Profile profile)
+        {
+            var index = client.Index(profile);
+        }
+
+        public void SearchProfile(ElasticClient client, string Keyword)
+        {
+            //Search
+            var searchResults = client.Search<Profile>(s => s
+            .From(0)
+            .Size(10)
+            .Query(q => q
+            .Term(p => p.Firstname, Keyword)
+                )
+            );
+        }
 
         public ActionResult Index()
         {

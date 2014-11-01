@@ -311,3 +311,6 @@ C:\Users\Martin\Documents\Visual Studio 2013\Projects\Recherche\WebAPI\bin\ru\Sy
 C:\Users\Martin\Documents\Visual Studio 2013\Projects\Recherche\WebAPI\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Martin\Documents\Visual Studio 2013\Projects\Recherche\WebAPI\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Martin\Documents\Visual Studio 2013\Projects\Recherche\WebAPI\obj\Debug\MvcApplication1.pdb
+C:\Users\Troy\Documents\GitHub\Recherche\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
+C:\Users\Troy\Documents\GitHub\Recherche\WebAPI\obj\Debug\MvcApplication1.dll
+C:\Users\Troy\Documents\GitHub\Recherche\WebAPI\obj\Debug\MvcApplication1.pdb
