@@ -52,6 +52,9 @@ namespace MvcApplication1.Controllers
                 body.Filter(filter =>
                     filter.Term(x => 
                         x.Location, _Location))
+                    .Query(q => q
+                        .Term(p => p.Name, Keyword)  
+                        )
             .Take(100));
 
              /* Exemple utilisation en stockage
@@ -60,8 +63,9 @@ namespace MvcApplication1.Controllers
                 Name = Location
              **  Places = searchResults.Documents.ToList()};
              }*/
-
         }
+
+        public void SearchPlacesAround(ElasticClient client) { }
 
         public ActionResult Index()
         {
