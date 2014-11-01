@@ -48,9 +48,24 @@ namespace MvcApplication1.Controllers
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Firstname, Keyword)
+            .Term(p => p.Pseudo, Keyword)
                 )
+            // Add OR LName - FName
             );
+        }
+
+        public void AdvancedSearchProfile(ElasticClient client, string Keyword, string FName, string LName, int Age)
+        {
+            //TODO filtres multiples
+            var searchResults = client.Search<Profile>(body =>
+                body.Query(query =>
+                    query.ConstantScore(csq =>
+                        csq.Filter(filter =>
+                            filter.Term(x =>
+                                x.Lastname, LName))
+                           .Query(q =>
+                                q.Term(p => p.Pseudo, Keyword))))
+                .Take(100));
         }
 
         public ActionResult Index()
