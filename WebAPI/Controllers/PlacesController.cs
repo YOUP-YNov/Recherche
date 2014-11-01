@@ -45,6 +45,24 @@ namespace MvcApplication1.Controllers
             );
         }
 
+        public void AdvancedSearchPlace(ElasticClient client, string Keyword, string Location)
+        {
+            //Search
+            var searchResults = client.Search<Place>(s => s
+            .From(0)
+            .Size(10)
+            .Query(q => q
+                .Term(p => p.Name, Keyword)
+                )
+            .Query(qd => qd
+                .Filtered(cs => cs
+                    .Query(q => q.MatchAll())
+                    .Filter(f => f.MatchAll())
+                )
+            )
+            );
+        }
+
         public ActionResult Index()
         {
             return View();
