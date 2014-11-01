@@ -47,6 +47,8 @@ namespace MvcApplication1.Controllers
 
         public void AdvancedSearchPlace(ElasticClient client, string Keyword, string _Location)
         {
+
+            /* Solution 1 - Pas trop perf
             //Search per location
             var searchResults = client.Search<Place>(body => 
                 body.Filter(filter =>
@@ -55,7 +57,18 @@ namespace MvcApplication1.Controllers
                     .Query(q => q
                         .Term(p => p.Name, Keyword)  
                         )
-            .Take(100));
+            .Take(100));*/
+
+            //Solution 2 - Plus perf
+            var searchResults = client.Search<Place>(body =>
+                body.Query(query =>
+                    query.ConstantScore(csq => 
+                        csq.Filter(filter =>
+                            filter.Term(x =>
+                                x.Location, _Location))
+                           .Query(q =>
+                                q.Term(p => p.Name, Keyword))))
+                .Take(100));
 
              /* Exemple utilisation en stockage
              **var PlacesInLocation = new CollectionDePlaces
