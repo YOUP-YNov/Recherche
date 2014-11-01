@@ -17,7 +17,6 @@ namespace MvcApplication1.Controllers
         public string Adresse { get; set; }
         public string Timeslot { get; set; }
 
-
         public Event(string _Id, string _Name, string _Type, DateTime _Date, Place _EPlace, string _Adresse, string _Timeslot)
         {
             this.Id = _Id;
