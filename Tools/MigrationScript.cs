@@ -18,10 +18,19 @@ namespace Tools
         static void Main(string[] args)
         {
             ElasticClient elastic = YoupElasticSearch.InitializeConnection();
+            if (blogMigration(elastic))
+            {
+                Console.WriteLine("Blog ==> Done.");
+            }
+            Console.ReadLine();
+        }
+
+        public static bool blogMigration(ElasticClient elastic)
+        {
             using (var context = new YoupDEVEntities())
             {
                 var blogs = (from b in context.BLOG_Blog
-                               select b).ToList<BLOG_Blog>();
+                             select b).ToList<BLOG_Blog>();
                 foreach (var blog in blogs)
                 {
                     Blog blogElastic = new Blog(blog.Blog_id.ToString(), blog.TitreBlog, blog.Theme_id.ToString());
@@ -50,6 +59,7 @@ namespace Tools
                     }
                 }
             }
+            return true;
         }
     }
 }
