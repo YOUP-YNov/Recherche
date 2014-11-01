@@ -9,17 +9,17 @@ namespace MvcApplication1.Controllers
 {
     public class Place
     {
-
         public string Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
 
-        public void Place(string _Id, string _Name, string _Location)
+        public Place(string _Id, string _Name, string _Location)
         {
             this.Id = _Id;
             this.Name = _Name;
             this.Location = _Location;
         }
+    }
 
 
 
@@ -33,7 +33,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(place);
         }
 
-        public void SearchProfile(ElasticClient client, string Keyword)
+        public void SimpleSearchPlace(ElasticClient client, string Keyword)
         {
             //Search
             var searchResults = client.Search<Place>(s => s

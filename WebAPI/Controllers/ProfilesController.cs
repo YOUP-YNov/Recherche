@@ -17,7 +17,7 @@ namespace MvcApplication1.Controllers
         public int Age { get; set; }
         public bool Sex { get; set; }
 
-        public void Profile(string _Id, string _Firstname, string _Lastname, string _Pseudo, string _Activity, int _Age, bool _Sex)
+        public Profile(string _Id, string _Firstname, string _Lastname, string _Pseudo, string _Activity, int _Age, bool _Sex)
         {
             this.Id = _Id;
             this.Firstname = _Firstname;
@@ -41,7 +41,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
-        public void SearchProfile(ElasticClient client, string Keyword)
+        public void SimpleSearchProfile(ElasticClient client, string Keyword)
         {
             //Search
             var searchResults = client.Search<Profile>(s => s

@@ -13,10 +13,11 @@ namespace MvcApplication1.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
+            /*
             Profile ProfilTest = new Profile();
             ElasticClient NewClient = YoupElasticSearch.InitializeConnection();
             ProfilTest.AddProfile(NewClient);
-            ProfilTest.SearchProfile(NewClient);
+            ProfilTest.SearchProfile(NewClient);*/
             return new string[] { "value1", "value2" };
         }
 
