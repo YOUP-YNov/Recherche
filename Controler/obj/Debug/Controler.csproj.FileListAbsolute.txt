@@ -1,9 +1,0 @@
-C:\Users\Troy\Documents\Visual Studio 2012\Projects\Expert1\Youp\Controler\bin\Debug\ClassLibrary1.dll
-C:\Users\Troy\Documents\Visual Studio 2012\Projects\Expert1\Youp\Controler\bin\Debug\ClassLibrary1.pdb
-C:\Users\Troy\Documents\Visual Studio 2012\Projects\Expert1\Youp\Controler\obj\Debug\ClassLibrary1.dll
-C:\Users\Troy\Documents\Visual Studio 2012\Projects\Expert1\Youp\Controler\obj\Debug\ClassLibrary1.pdb
-C:\Users\Antoine\Documents\YOUP\Controler\bin\Debug\ClassLibrary1.dll
-C:\Users\Antoine\Documents\YOUP\Controler\bin\Debug\ClassLibrary1.pdb
-C:\Users\Antoine\Documents\YOUP\Controler\obj\Debug\Controler.csprojResolveAssemblyReference.cache
-C:\Users\Antoine\Documents\YOUP\Controler\obj\Debug\ClassLibrary1.dll
-C:\Users\Antoine\Documents\YOUP\Controler\obj\Debug\ClassLibrary1.pdb

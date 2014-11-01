@@ -17,28 +17,17 @@ namespace MvcApplication1.Controllers
         public int Age { get; set; }
         public bool Sex { get; set; }
 
-        public void AddProfile(ElasticClient client)
+        public Profile(string _Id, string _Firstname, string _Lastname, string _Pseudo, string _Activity, int _Age, bool _Sex)
         {
-            //Add Flavien
-            var PersonTest = new Profile();
-            PersonTest.Id = "2";
-            PersonTest.Firstname = "Antoine";
-            PersonTest.Lastname = "Geslin";
-            var index = client.Index(PersonTest);
-
+            this.Id = _Id;
+            this.Firstname = _Firstname;
+            this.Lastname = _Lastname;
+            this.Pseudo = _Pseudo;
+            this.Activity = _Activity;
+            this.Age = _Age;
+            this.Sex = _Sex;
         }
 
-        public void SearchProfile(ElasticClient client)
-        {
-            //Search
-            var searchResults = client.Search<Profile>(s => s
-            .From(0)
-            .Size(10)
-            .Query(q => q
-            .Term(p => p.Firstname, "Flavien")
-                )
-            );
-        }
     }
     
 
@@ -46,6 +35,38 @@ namespace MvcApplication1.Controllers
     {
         //
         // GET: /Profiles/
+
+        public void AddProfile(ElasticClient client, Profile profile)
+        {
+            var index = client.Index(profile);
+        }
+
+        public void SimpleSearchProfile(ElasticClient client, string Keyword)
+        {
+            //Search
+            var searchResults = client.Search<Profile>(s => s
+            .From(0)
+            .Size(10)
+            .Query(q => q
+            .Term(p => p.Pseudo, Keyword)
+                )
+            // Add OR LName - FName
+            );
+        }
+
+        public void AdvancedSearchProfile(ElasticClient client, string Keyword, string FName, string LName, int Age)
+        {
+            //TODO filtres multiples
+            var searchResults = client.Search<Profile>(body =>
+                body.Query(query =>
+                    query.ConstantScore(csq =>
+                        csq.Filter(filter =>
+                            filter.Term(x =>
+                                x.Lastname, LName))
+                           .Query(q =>
+                                q.Term(p => p.Pseudo, Keyword))))
+                .Take(100));
+        }
 
         public ActionResult Index()
         {
