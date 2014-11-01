@@ -99,7 +99,7 @@ namespace MvcApplication1.Controllers
         {
             var index = client.Index(blogpostcomment);
         }
-        public void SimpleSearchBlog(ElasticClient client, string Keyword)
+        public void SimpleSearchBlogComment(ElasticClient client, string Keyword)
         {
             //Search
             var searchResults = client.Search<BlogPostComment>(s => s
