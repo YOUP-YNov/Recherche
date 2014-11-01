@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a9d7077ed09469595d646bf6e964884" Name="Diagram1">
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Article" Width="1.5" PointX="11.25" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Blog" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Commentaire" Width="1.5" PointX="16.5" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_HashTagArticle" Width="1.5" PointX="13.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Like" Width="1.5" PointX="16.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Publicite" Width="1.5" PointX="5.25" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Theme" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.BLOG_Visite" Width="1.5" PointX="11.25" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.CONNECT_Authentification" Width="1.5" PointX="3" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.EVE_Etat" Width="1.5" PointX="3.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.EVE_Evenement" Width="1.5" PointX="6" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.EVE_EvenementPhoto" Width="1.5" PointX="8.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.EVE_HashTagEvenement" Width="1.5" PointX="8.25" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.EVE_LieuEvenement" Width="1.5" PointX="3.75" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.FOR_Forum" Width="1.5" PointX="4.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.FOR_HashTagTopic" Width="1.5" PointX="11.25" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.FOR_Message" Width="1.5" PointX="3" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.FOR_Sujet" Width="1.5" PointX="6.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.FOR_Topic" Width="1.5" PointX="9" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.HC_Connexion" Width="1.5" PointX="6" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.HC_Device" Width="1.5" PointX="3.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.HR_Historique" Width="1.5" PointX="6" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.HR_Signaler" Width="1.5" PointX="6" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.HR_Site" Width="1.5" PointX="3.75" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.HR_TypeSignal" Width="1.5" PointX="3.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Amis" Width="1.5" PointX="3" PointY="56.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Appreciation" Width="1.5" PointX="3" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Categorie" Width="1.5" PointX="6.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Question" Width="1.5" PointX="11.25" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Utilisateur" Width="1.5" PointX="0.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Utilisateur_Aime_Categorie" Width="1.5" PointX="9" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Utilisateur_Invite_Evenement" Width="1.5" PointX="14.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Utilisateur_Note_Evenement" Width="1.5" PointX="14.25" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="YoupDEVModel.UT_Utilisateur_Participe_Evenement" Width="1.5" PointX="14.25" PointY="35" IsExpanded="true" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Arti__Blog___4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Arti__Evene__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Comm__Artic__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Hash__Artic__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Like__Artic__3EDC53F0" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Blog__Categ__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Blog__Theme__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Blog__Utili__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Publ__Blog___46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Visi__Blog___47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Comm__Utili__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Like__Utili__3FD07829" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__BLOG_Visi__Utili__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__CONNECT_A__Utili__208CD6FA" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__EVE_Evene__Etat___0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__EVE_Evene__Categ__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__EVE_Evene__Evene__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__EVE_Evene__LieuE__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__EVE_Evene__Utili__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__EVE_HashT__Evene__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Questi__Evene__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Evene__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Evene__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Evene__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__FOR_Sujet__Forum__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__FOR_HashT__Topic__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__FOR_Messa__Topic__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__FOR_Messa__Utili__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__FOR_Topic__Sujet__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__FOR_Topic__Utili__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__HC_Connex__Devic__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__HC_Connex__Utili__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__HR_Histor__Site___5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__HR_Signal__Site___534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__HR_Signal__TypeS__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__HR_Signal__Utili__1EA48E88" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Amis__Utilisa__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Amis__Utilisa__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Apprec__Utili__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Apprec__Utili__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Categ__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Questi__Utili__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Utili__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Utili__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Utili__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Utili__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="YoupDEVModel.FK__UT_Utilis__Utili__2B0A656D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

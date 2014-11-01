@@ -35,6 +35,12 @@
     <Reference Include="Elasticsearch.Net">
       <HintPath>..\packages\Elasticsearch.Net.1.2.1\lib\Elasticsearch.Net.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Nest">
       <HintPath>..\packages\NEST.1.2.1\lib\Nest.dll</HintPath>
     </Reference>
@@ -43,7 +49,11 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,12 +61,254 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BLOG_Article.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_Blog.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_Commentaire.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetAdByBlogId_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetArticlesByTag_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetArticles_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetBlogById_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetBlogsByCategory_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetBlogsBySearch_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetBlogs_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetCategories_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetCommentaireById_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetCommentaires_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetPromotedBlogs_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_GetThemeById_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_HashTagArticle.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_Like.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_Publicite.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_Theme.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOG_Visite.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONNECT_Authentification.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVE_Etat.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVE_Evenement.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVE_EvenementPhoto.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVE_HashTagEvenement.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EVE_LieuEvenement.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FOR_Forum.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FOR_HashTagTopic.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FOR_Message.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FOR_Sujet.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FOR_Topic.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HC_Connexion.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HC_Device.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_Historique.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_Signaler.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_Site.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_TypeSignal.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ps_GetAllCategorie_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetAllEvenement_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetEvenementById_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetEventByCategAndCP_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetEventByCateg_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetEventByCP_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetEventByProfil_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetImage_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetLieuEvenementByCodePostale_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetLieuEvenementById_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_GetLieuEvenementByVille_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetAmisByUtilisateur_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetCategorieByUtilisateur_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetEvenementCreateByUtilisateur_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetParticipeEventByUtilisateur_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetTenProfilUtilisateur_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetTopEvent_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetUtilisateurByEmailPasswd_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetUtilisateurById_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ps_UT_GetUtilisateurs_Result.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Amis.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Appreciation.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Categorie.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Question.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Utilisateur.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Utilisateur_Aime_Categorie.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Utilisateur_Invite_Evenement.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Utilisateur_Note_Evenement.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UT_Utilisateur_Participe_Evenement.cs">
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Youp.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Youp.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Youp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Youp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Youp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Youp.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="Youp.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Youp.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Youp.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Youp.edmx</DependentUpon>
+      <LastGenOutput>Youp.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Youp.edmx.diagram">
+      <DependentUpon>Youp.edmx</DependentUpon>
+    </None>
+    <None Include="Youp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Youp.edmx</DependentUpon>
+      <LastGenOutput>Youp.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebAPI\WebAPI.csproj">
+      <Project>{9a6f1354-5057-40f9-aece-babdf27a73d4}</Project>
+      <Name>WebAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
