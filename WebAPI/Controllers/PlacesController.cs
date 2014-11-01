@@ -45,22 +45,22 @@ namespace MvcApplication1.Controllers
             );
         }
 
-        public void AdvancedSearchPlace(ElasticClient client, string Keyword, string Location)
+        public void AdvancedSearchPlace(ElasticClient client, string Keyword, string _Location)
         {
-            //Search
-            var searchResults = client.Search<Place>(s => s
-            .From(0)
-            .Size(10)
-            .Query(q => q
-                .Term(p => p.Name, Keyword)
-                )
-            .Query(qd => qd
-                .Filtered(cs => cs
-                    .Query(q => q.MatchAll())
-                    .Filter(f => f.MatchAll())
-                )
-            )
-            );
+            //Search per location
+            var searchResults = client.Search<Place>(body => 
+                body.Filter(filter =>
+                    filter.Term(x => 
+                        x.Location, _Location))
+            .Take(100));
+
+             /* Exemple utilisation en stockage
+             **var PlacesInLocation = new CollectionDePlaces
+             **{
+                Name = Location
+             **  Places = searchResults.Documents.ToList()};
+             }*/
+
         }
 
         public ActionResult Index()
