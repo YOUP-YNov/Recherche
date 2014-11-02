@@ -17,9 +17,14 @@ namespace Tools
         static void Main(string[] args)
         {
             ElasticClient elastic = YoupElasticSearch.InitializeConnection();
+            
             if (blogMigration(elastic))
             {
-                Console.WriteLine("Blog ==> Done.");
+                Console.WriteLine("Blogs ==> Done.");
+            }
+            if (placeMigration(elastic))
+            {
+                Console.WriteLine("Places ==> Done.");
             }
             Console.ReadLine();
         }
@@ -56,6 +61,21 @@ namespace Tools
                             var indexC = elastic.Index(commentElastic);
                         }
                     }
+                }
+            }
+            return true;
+        }
+
+        public static bool placeMigration(ElasticClient elastic)
+        {
+            using (var context = new YoupDEVEntities())
+            {
+                var places = (from p in context.EVE_LieuEvenement
+                             select p).ToList<EVE_LieuEvenement>();
+                
+                foreach(var place in places){
+                    Place placeElastic = new Place(place.LieuEvenement_id.ToString(), place.Nom, place.Ville);
+                    var indexP = elastic.Index(placeElastic);
                 }
             }
             return true;
