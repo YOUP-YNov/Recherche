@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nest;
+using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
@@ -31,18 +32,20 @@ namespace MvcApplication1.Controllers
     }
     
 
-    public class ProfilesController : Controller
+    public class ProfilesController : ApiController
     {
         //
         // GET: /Profiles/
 
-        public void AddProfile(ElasticClient client, Profile profile)
+        public void AddProfile(Profile profile)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(profile);
         }
 
-        public void SimpleSearchProfile(ElasticClient client, string Keyword)
+        public void SimpleSearchProfile(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Profile>(s => s
             .From(0)
@@ -54,8 +57,9 @@ namespace MvcApplication1.Controllers
             );
         }
 
-        public void AdvancedSearchProfile(ElasticClient client, string Keyword, string FName, string LName, int Age)
+        public void AdvancedSearchProfile(string Keyword, string FName, string LName, int Age)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             //TODO filtres multiples
             var searchResults = client.Search<Profile>(body =>
                 body.Query(query =>
@@ -66,11 +70,6 @@ namespace MvcApplication1.Controllers
                            .Query(q =>
                                 q.Term(p => p.Pseudo, Keyword))))
                 .Take(100));
-        }
-
-        public ActionResult Index()
-        {
-            return View();
         }
 
     }

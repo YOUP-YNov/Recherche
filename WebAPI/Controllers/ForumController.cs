@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nest;
+using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
@@ -23,17 +24,19 @@ namespace MvcApplication1.Controllers
 
     }
 
-    public class ForumController : Controller
+    public class ForumController : ApiController
     {
         //
         // GET: /Forum/
-        public void AddPostForum(ElasticClient client, PostForum postforum)
+        public void AddPostForum(PostForum postforum)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(postforum);
         }
 
-        public void SimpleSearchPostForum(ElasticClient client, string Keyword)
+        public void SimpleSearchPostForum(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<PostForum>(s => s
             .From(0)
@@ -43,11 +46,5 @@ namespace MvcApplication1.Controllers
                 )
             );
         }
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
     }
 }
