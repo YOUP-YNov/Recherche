@@ -12,13 +12,13 @@ namespace MvcApplication1.Controllers
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Theme { get; set; }
+        public string Categorie { get; set; }
 
-        public Blog(string _Id, string _Name, string _Theme)
+        public Blog(string _Id, string _Name, string _Categorie)
         {
             this.Id = _Id;
             this.Name = _Name;
-            this.Theme = _Theme;
+            this.Categorie = _Categorie;
         }
 
     }
@@ -83,7 +83,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(blogpost);
         }
 
-        public void SimpleSearchBlogPost(ElasticClient client, string Keyword)
+        public IEnumerable<BlogPost> SimpleSearchBlogPost(ElasticClient client, string Keyword)
         {
             //Search
             var searchResults = client.Search<BlogPost>(s => s
@@ -93,6 +93,8 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Title, Keyword)
                 )
             );
+
+            return searchResults.Documents;
         }
 
         public void AddBlog(ElasticClient client, BlogPostComment blogpostcomment)
@@ -109,6 +111,7 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Content, Keyword)
                 )
             );
+
         }
 
         public ActionResult Index()
