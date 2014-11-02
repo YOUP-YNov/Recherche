@@ -35,7 +35,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(place);
         }
 
-        public void SimpleSearchPlace(/*string Keyword*/)
+        public string SimpleSearchPlace(/*string Keyword*/)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -47,6 +47,12 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Name, "test")
                 )
             );
+
+            var request = client.Serializer.Serialize(searchResults);
+            return request.ToString();
+          /*  Assert.NotNull(result);
+            Assert.True(result.Success);
+            Assert.IsNotEmpty(result.Result);*/
         }
 
         public void AdvancedSearchPlace(string Keyword, string _Location)

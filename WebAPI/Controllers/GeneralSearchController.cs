@@ -11,11 +11,11 @@ namespace MvcApplication1.Controllers
     public class GeneralSearchController : ApiController
     {
         // GET search/values
-        public IEnumerable<string>Get()
+        public IEnumerable<string> GetPlaces()
         {
-            ElasticClient NewClient = YoupElasticSearch.InitializeConnection();
-            BlogController ControllerTest = new BlogController();
-            return new string[] { "value1", "value2" };
+            PlacesController ControllerTest = new PlacesController();
+            ControllerTest.SimpleSearchPlace();
+            return new string[] { "Recherche", "Ok" };
         }
 
         // GET search/values/5

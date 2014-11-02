@@ -11,7 +11,7 @@ namespace MvcApplication1
         {
             config.Routes.MapHttpRoute(
                 name: "YoupSearchApi",
-                routeTemplate: "Search/{controller}/{id}",
+                routeTemplate: "Search/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

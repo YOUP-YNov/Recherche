@@ -20,7 +20,7 @@ namespace MvcApplication1.Tests.Controllers
             GeneralSearchController controller = new GeneralSearchController();
 
             // Agir
-            IEnumerable<string> result = controller.Get();
+            IEnumerable<string> result = controller.GetPlaces();
 
             // Déclarer
             Assert.IsNotNull(result);
