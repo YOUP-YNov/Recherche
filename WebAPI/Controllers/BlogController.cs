@@ -87,7 +87,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(blogpost);
         }
 
-        public IEnumerable<BlogPost> SimpleSearchBlogPost(string Keyword)
+        public /*IEnumerable<BlogPost>*/string SimpleSearchBlogPost(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
@@ -98,8 +98,8 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Title, Keyword)
                 )
             );
-
-            return searchResults.Documents;
+              return searchResults.Total.ToString();
+         //   return searchResults.Documents;
         }
 
         public void AddBlog(BlogPostComment blogpostcomment)

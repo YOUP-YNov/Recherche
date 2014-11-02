@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Nest;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace MvcApplication1.Controllers
 {
@@ -48,8 +49,8 @@ namespace MvcApplication1.Controllers
                 )
             );
 
-            var request = client.Serializer.Serialize(searchResults);
-            return request.ToString();
+            return searchResults.Total.ToString();
+
           /*  Assert.NotNull(result);
             Assert.True(result.Success);
             Assert.IsNotEmpty(result.Result);*/

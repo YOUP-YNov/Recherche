@@ -11,11 +11,10 @@ namespace MvcApplication1.Controllers
     public class GeneralSearchController : ApiController
     {
         // GET search/values
-        public IEnumerable<string> GetPlaces()
+        public string GetPlaces()
         {
-            PlacesController ControllerTest = new PlacesController();
-            ControllerTest.SimpleSearchPlace();
-            return new string[] { "Recherche", "Ok" };
+            BlogController ControllerTest = new BlogController();
+            return ControllerTest.SimpleSearchBlogPost("test");
         }
 
         // GET search/values/5
