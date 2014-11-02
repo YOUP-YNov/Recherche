@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nest;
+using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
@@ -56,18 +57,20 @@ namespace MvcApplication1.Controllers
 
 
 
-    public class BlogController : Controller
+    public class BlogController : ApiController
     {
         //
         // GET: /Blog/
 
-        public void AddBlog(ElasticClient client, Blog blog)
+        public void AddBlog(Blog blog)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(blog);
         }
 
-        public void SimpleSearchBlog(ElasticClient client, string Keyword)
+        public void SimpleSearchBlog(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Blog>(s => s
             .From(0)
@@ -78,13 +81,15 @@ namespace MvcApplication1.Controllers
             );
         }
 
-        public void AddBlogPost(ElasticClient client, BlogPost blogpost)
+        public void AddBlogPost(BlogPost blogpost)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(blogpost);
         }
 
-        public IEnumerable<BlogPost> SimpleSearchBlogPost(ElasticClient client, string Keyword)
+        public IEnumerable<BlogPost> SimpleSearchBlogPost(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<BlogPost>(s => s
             .From(0)
@@ -97,12 +102,14 @@ namespace MvcApplication1.Controllers
             return searchResults.Documents;
         }
 
-        public void AddBlog(ElasticClient client, BlogPostComment blogpostcomment)
+        public void AddBlog(BlogPostComment blogpostcomment)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(blogpostcomment);
         }
-        public void SimpleSearchBlogComment(ElasticClient client, string Keyword)
+        public void SimpleSearchBlogComment(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<BlogPostComment>(s => s
             .From(0)
@@ -112,11 +119,6 @@ namespace MvcApplication1.Controllers
                 )
             );
 
-        }
-
-        public ActionResult Index()
-        {
-            return View();
         }
 
     }
