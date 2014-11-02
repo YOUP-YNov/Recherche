@@ -11,17 +11,12 @@ namespace MvcApplication1.Controllers
     public class ValuesController : ApiController
     {
         // GET search/values
-        public /*IEnumerable<string>IEnumerable<BlogPost> */ string Get()
+        public IEnumerable<string>Get()
         {
             
-          //  Profile ProfilTest = new Profile();
             ElasticClient NewClient = YoupElasticSearch.InitializeConnection();
-           /* ProfilTest.AddProfile(NewClient);
-            ProfilTest.SearchProfile(NewClient);*/
-            string testc  = "test";
             BlogController ControllerTest = new BlogController();
-            return ControllerTest.SimpleSearchBlogPost(NewClient, testc).ToString();
-         //   return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2" };
         }
 
         // GET search/values/5
