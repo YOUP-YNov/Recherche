@@ -59,8 +59,11 @@ namespace MvcApplication1.Controllers
 
     public class BlogController : ApiController
     {
-        //
-        // GET: /Blog/
+        // GET search/blog/test
+        public string Get(string id)
+        {
+            return id;
+        }
 
         public void AddBlog(Blog blog)
         {
@@ -68,7 +71,8 @@ namespace MvcApplication1.Controllers
             var index = client.Index(blog);
         }
 
-        public void SimpleSearchBlog(string Keyword)
+        // GET search/blog/SimpleSearchBlog/test
+        public string SimpleSearchBlog(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
@@ -76,9 +80,10 @@ namespace MvcApplication1.Controllers
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Name, Keyword)
+            .Term(p => p.Name, id)
                 )
             );
+            return "test";
         }
 
         public void AddBlogPost(BlogPost blogpost)

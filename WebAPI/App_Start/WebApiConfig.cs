@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace MvcApplication1
@@ -23,6 +24,8 @@ namespace MvcApplication1
             // Pour désactiver le suivi dans votre application, supprimez le commentaire de la ligne de code suivante ou supprimez cette dernière
             //Pour plus d’informations, consultez la page : http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
 }
