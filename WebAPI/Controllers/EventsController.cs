@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nest;
+using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
@@ -30,17 +31,20 @@ namespace MvcApplication1.Controllers
 
     }
 
-    public class EventsController : Controller
+    public class EventsController : ApiController
     {
         //
         // GET: /Events/
-        public void AddPlace(ElasticClient client, Event _event)
+        public void AddPlace(Event _event)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(_event);
         }
 
-        public void SimpleSearchPlace(ElasticClient client, string Keyword)
+        public void SimpleSearchPlace(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+
             //Search
             var searchResults = client.Search<Event>(s => s
             .From(0)
@@ -49,11 +53,6 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Name, Keyword)
                 )
             );
-        }
-
-        public ActionResult Index()
-        {
-            return View();
         }
 
     }

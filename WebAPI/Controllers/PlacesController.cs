@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nest;
+using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
@@ -23,18 +24,21 @@ namespace MvcApplication1.Controllers
 
 
 
-    public class PlacesController : Controller
+    public class PlacesController : ApiController
     {
         //
         // GET: /Places/
 
-        public void AddPlace(ElasticClient client, Place place)
+        public void AddPlace(Place place)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(place);
         }
 
-        public void SimpleSearchPlace(ElasticClient client, string Keyword)
+        public void SimpleSearchPlace(string Keyword)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+
             //Search
             var searchResults = client.Search<Place>(s => s
             .From(0)
@@ -45,8 +49,9 @@ namespace MvcApplication1.Controllers
             );
         }
 
-        public void AdvancedSearchPlace(ElasticClient client, string Keyword, string _Location)
+        public void AdvancedSearchPlace(string Keyword, string _Location)
         {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             /* Solution 1 - Pas trop perf
             //Search per location
@@ -79,11 +84,6 @@ namespace MvcApplication1.Controllers
         }
 
         public void SearchPlacesAround(ElasticClient client) { }
-
-        public ActionResult Index()
-        {
-            return View();
-        }
 
     }
 }
