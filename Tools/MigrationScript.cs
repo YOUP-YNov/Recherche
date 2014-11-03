@@ -14,6 +14,7 @@ namespace Tools
 {
     class MigrationScript
     {
+        //Main
         static void Main(string[] args)
         {
             ElasticClient elastic = YoupElasticSearch.InitializeConnection();
@@ -26,9 +27,14 @@ namespace Tools
             {
                 Console.WriteLine("Places ==> Done.");
             }
+            if (userMigration(elastic))
+            {
+                Console.WriteLine("Users ==> Done.");
+            }
             Console.ReadLine();
         }
 
+        //Migration blog
         public static bool blogMigration(ElasticClient elastic)
         {
             using (var context = new YoupDEVEntities())
@@ -80,5 +86,32 @@ namespace Tools
             }
             return true;
         }
+
+        //Migration user
+        public static bool userMigration(ElasticClient elastic)
+        {
+            using (var context = new YoupDEVEntities())
+            {
+                //Get BASE
+                var users = (from u in context.UT_Utilisateur
+                               select u).ToList<UT_Utilisateur>();
+
+                //Translate into LUCENE
+                foreach (var user in users)
+                {
+                    //Age (years only)
+                    var now = float.Parse(DateTime.Now.ToString("yyyy.MMdd"));
+                    var dob = float.Parse(user.DateNaissance.ToString("yyyy.MMdd"));
+                    int userAge = (int)(now - dob);
+                    //Create entity into LUCENE
+                    Profile profileElastic = new Profile(user.Utilisateur_id.ToString(), user.Prenom, user.Nom, user.Pseudo, user.Situation, userAge, user.Sexe);
+                    //Index entity
+                    var indexP = elastic.Index(profileElastic);
+                }
+            }
+            return true;
+        }
+
+
     }
 }
