@@ -112,6 +112,42 @@ namespace Tools
             return true;
         }
 
+        //Migration event
+        public static bool eventMigration(ElasticClient elastic)
+        {
+            using (var context = new YoupDEVEntities())
+            {
+                //Get BASE
+                var events = (from e in context.EVE_Evenement
+                             select e).ToList<EVE_Evenement>();
+
+                //Translate into LUCENE
+                foreach (var _event in events)
+                {
+                    //Place
+                    // Place placeElastic = new Place(place.LieuEvenement_id.ToString(), place.Nom, place.Ville);
+                    Place eventPlace = new Place(_event.LieuEvenement_id.ToString(), _event.EVE_LieuEvenement.Nom, _event.EVE_LieuEvenement.Ville);
+
+                    //Create entity into LUCENE
+                    //WARNING -- TImeslot missing --
+                    /* public string Id { get; set; }
+                    ** public string Name { get; set; }
+                    ** public long Type { get; set; }
+                    ** public DateTime Date { get; set; }
+                    ** public Place EPlace { get; set; }
+                    ** public string Adresse { get; set; }
+                    ** public string Timeslot { get; set; } <<<!!!>>>
+
+                    public Event(string _Id, string _Name, long _Type, DateTime _Date, Place _EPlace, string _Adresse, string _Timeslot <<<!!!>>>)*/
+                    Event eventElastic = new Event(_event.Evenement_id.ToString(), _event.TitreEvenement, _event.Categorie_id, _event.DateEvenement, eventPlace, _event.EVE_LieuEvenement.Adresse);
+                    //Index entity
+                    var indexP = elastic.Index(eventElastic);
+                }
+            }
+            return true;
+        }
+
+
 
     }
 }
