@@ -27,9 +27,17 @@ namespace Tools
             {
                 Console.WriteLine("Places ==> Done.");
             }
+            if (eventMigration(elastic))
+            {
+                Console.WriteLine("Events ==> Done.");
+            }
             if (userMigration(elastic))
             {
                 Console.WriteLine("Users ==> Done.");
+            }
+            if (forumMigration(elastic))
+            {
+                Console.WriteLine("Forum ==> Done.");
             }
             Console.ReadLine();
         }
@@ -64,7 +72,7 @@ namespace Tools
                         foreach (var comment in comments)
                         {
                             BlogPostComment commentElastic = new BlogPostComment(comment.Commentaire_id.ToString(), comment.ContenuCommentaire, comment.Utilisateur_id.ToString());
-                            var indexC = elastic.Index(commentElastic);
+                            var indexB = elastic.Index(commentElastic);
                         }
                     }
                 }
@@ -100,13 +108,13 @@ namespace Tools
                 foreach (var user in users)
                 {
                     //Age (years only)
-                    var now = float.Parse(DateTime.Now.ToString("yyyy.MMdd"));
-                    var dob = float.Parse(user.DateNaissance.ToString("yyyy.MMdd"));
+                    var now = DateTime.Now.Year;
+                    var dob = user.DateNaissance.Year;
                     int userAge = (int)(now - dob);
                     //Create entity into LUCENE
                     Profile profileElastic = new Profile(user.Utilisateur_id.ToString(), user.Prenom, user.Nom, user.Pseudo, user.Situation, userAge, user.Sexe);
                     //Index entity
-                    var indexP = elastic.Index(profileElastic);
+                    var indexU = elastic.Index(profileElastic);
                 }
             }
             return true;
@@ -130,23 +138,40 @@ namespace Tools
 
                     //Create entity into LUCENE
                     //WARNING -- TImeslot missing --
-                    /* public string Id { get; set; }
-                    ** public string Name { get; set; }
-                    ** public long Type { get; set; }
-                    ** public DateTime Date { get; set; }
-                    ** public Place EPlace { get; set; }
-                    ** public string Adresse { get; set; }
+                    /* 
                     ** public string Timeslot { get; set; } <<<!!!>>>
-
                     public Event(string _Id, string _Name, long _Type, DateTime _Date, Place _EPlace, string _Adresse, string _Timeslot <<<!!!>>>)*/
+
                     Event eventElastic = new Event(_event.Evenement_id.ToString(), _event.TitreEvenement, _event.Categorie_id, _event.DateEvenement, eventPlace, _event.EVE_LieuEvenement.Adresse);
                     //Index entity
-                    var indexP = elastic.Index(eventElastic);
+                    var indexES = elastic.Index(eventElastic);
                 }
             }
             return true;
         }
 
+        //Migration forum
+        public static bool forumMigration(ElasticClient elastic)
+        {
+            using (var context = new YoupDEVEntities())
+            {
+                //Get BASE
+                var postforums = (from m in context.FOR_Message
+                             select m).ToList<FOR_Message>();
+
+                //Translate into LUCENE
+                foreach (var postforum in postforums)
+                {
+                    //Create entity into LUCENE
+                    PostForum postforumElastic = new PostForum(postforum.Message_id.ToString(), "test", postforum.ContenuMessage ,postforum.DatePoste,postforum.UT_Utilisateur.Pseudo);
+
+                    // public PostForum(string _Id, string _board, string _content, DateTime _date, string _author)
+                    //Index entity
+                    var indexFS = elastic.Index(postforumElastic);
+                }
+            }
+            return true;
+        }
 
 
     }

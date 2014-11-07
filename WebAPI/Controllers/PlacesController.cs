@@ -48,6 +48,7 @@ namespace MvcApplication1.Controllers
             
             return searchResults.Documents;
 
+
           /*  Assert.NotNull(result);
             Assert.True(result.Success);
             Assert.IsNotEmpty(result.Result);*/
@@ -77,7 +78,7 @@ namespace MvcApplication1.Controllers
                                 x.Location, _Location))
                            .Query(q =>
                                 q.Term(p => p.Name, Keyword))))
-                .Take(100));
+                .Take(20));
 
              /* Exemple utilisation en stockage
              **var PlacesInLocation = new CollectionDePlaces
