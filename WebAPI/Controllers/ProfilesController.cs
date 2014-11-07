@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
     }
     
 
-    public class profilesController : ApiController
+    public class ProfilesController : ApiController
     {
         //
         // GET: /Profiles/
@@ -43,21 +43,18 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
-        public IEnumerable<Profile> GetSimpleSearchProfile()
+        public void SimpleSearchProfile(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-          
+            //Search
             var searchResults = client.Search<Profile>(s => s
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Pseudo, nvc["keyword"])
+                .Term(p => p.Pseudo, Keyword)
                 )
             // Add OR LName - FName
             );
-
-            return searchResults.Documents;
         }
 
         public void AdvancedSearchProfile(string Keyword, string FName, string LName, int Age)

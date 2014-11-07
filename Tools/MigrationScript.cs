@@ -72,7 +72,7 @@ namespace Tools
                         foreach (var comment in comments)
                         {
                             BlogPostComment commentElastic = new BlogPostComment(comment.Commentaire_id.ToString(), comment.ContenuCommentaire, comment.Utilisateur_id.ToString());
-                            var indexB = elastic.Index(commentElastic);
+                            var indexBPC = elastic.Index(commentElastic);
                         }
                     }
                 }

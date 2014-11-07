@@ -12,7 +12,7 @@ namespace MvcApplication1
         {
             config.Routes.MapHttpRoute(
                 name: "YoupSearchApi",
-                routeTemplate: "search/{controller}/{action}/{type}",
+                routeTemplate: "{controller}/{action}/{type}",
                 defaults: new { type = RouteParameter.Optional }
             );
 
