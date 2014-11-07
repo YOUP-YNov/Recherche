@@ -47,14 +47,20 @@ namespace MvcApplication1.Controllers
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
+            int from = Int32.Parse(nvc["from"]);
+            int take = Int32.Parse(nvc["take"]);
+            if (from == null) { from = 0; }
+            if ((take == null) || (take == 0)) { take = 20; }
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Profile>(s => s
-            .From(0)
-            .Size(10)
             .Query(q => q
-                .Term(p => p.Pseudo, nvc["keyword"])
+                .Term(p => p.Firstname, nvc["keyword"])
                 )
+                .From(from)
+                .Take(take)
+
             // Add OR LName - FName
             );
 
