@@ -43,7 +43,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
-        public void SimpleSearchProfile()
+        public void GetSimpleSearchProfile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
@@ -59,7 +59,7 @@ namespace MvcApplication1.Controllers
             );
         }
 
-        public void AdvancedSearchProfile()
+        public void GetAdvancedSearchProfile()
         {
 
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
