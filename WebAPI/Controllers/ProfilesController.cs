@@ -43,7 +43,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
-        public void GetSimpleSearchProfile()
+        public IEnumerable<Profile> GetSimpleSearchProfile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
@@ -57,11 +57,12 @@ namespace MvcApplication1.Controllers
                 )
             // Add OR LName - FName
             );
+
+            return searchResults.Documents;
         }
 
-        public void GetAdvancedSearchProfile()
+        public IEnumerable<Profile> GetAdvancedSearchProfile()
         {
-
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
@@ -82,6 +83,8 @@ namespace MvcApplication1.Controllers
                            .Query(q =>
                                 q.Term(p => p.Pseudo, nvc["keyword"]))))
                 .Take(20));
+
+            return searchResults.Documents;
         }
 
     }
