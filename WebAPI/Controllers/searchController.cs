@@ -11,7 +11,7 @@ namespace MvcApplication1.Controllers
     public class searchController : ApiController
     {
         // GET search/values
-        public string[] GetPlaces()
+        /*public string[] GetPlaces()
         {
             BlogController ControllerTest = new BlogController();
             var tests = ControllerTest.SimpleSearchBlogPost("4");
@@ -22,12 +22,31 @@ namespace MvcApplication1.Controllers
                 testArray.Add(test.Content);
             }
             return testArray.ToArray<string>();
-        }
+        }*/
 
         // GET search/values/5
-        public string Get(int id)
+        public string Get(string type)
         {
-            return "value";
+            switch (type)
+            {
+                case "blog":
+                    return type;
+                case "event":
+                    return type;
+                case "forum":
+                    return type;
+                case "place":
+                    return type;
+                case "profile":
+                    return type;
+            }
+
+            return "default";
+        }
+
+        public string Get()
+        {
+            return "test"; 
         }
 
         // POST search/values

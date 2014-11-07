@@ -12,8 +12,8 @@ namespace MvcApplication1
         {
             config.Routes.MapHttpRoute(
                 name: "YoupSearchApi",
-                routeTemplate: "{controller}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "{controller}/{action}/{type}",
+                defaults: new { type = RouteParameter.Optional }
             );
 
             // Supprimez les commentaires de la ligne de code suivante pour activer la prise en charge des requêtes pour les actions ayant un type de retour IQueryable ou IQueryable<T>.
