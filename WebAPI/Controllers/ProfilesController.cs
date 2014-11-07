@@ -56,7 +56,7 @@ namespace MvcApplication1.Controllers
             //Search
             var searchResults = client.Search<Profile>(s => s
             .Query(q => q
-                .Term(p => p.Firstname, nvc["keyword"])
+                .Term(p => new [] {p.Pseudo, p.Lastname, p.Firstname}, nvc["keyword"])
                 )
                 .From(from)
                 .Take(take)
