@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Nest;
 using System.Web.Http;
+using RechercheDal;
 
 namespace MvcApplication1.Controllers
 {
