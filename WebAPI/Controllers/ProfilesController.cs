@@ -46,11 +46,21 @@ namespace MvcApplication1.Controllers
         public IEnumerable<Profile> GetSimpleSearchProfile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            int from, take;
 
-            int from = Int32.Parse(nvc["from"]);
-            int take = Int32.Parse(nvc["take"]);
-            if (from == null) { from = 0; }
-            if ((take == null) || (take == 0)) { take = 20; }
+            //Test parameters FROM & SET if null
+            if (nvc["from"] == null) { from = 0; }
+            //Else GET parameter From
+            else { from = Int32.Parse(nvc["from"]); }
+            //Test parameters TAKE & SET if null
+            if ((nvc["take"] == null) || (Int32.Parse(nvc["take"]) == 0)) { take = 20; }
+            //Else GET parameters From && TAKE from URL
+            else { take = Int32.Parse(nvc["take"]); }
+
+            
+            
+            
+
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
