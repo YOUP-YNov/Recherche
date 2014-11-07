@@ -13,10 +13,10 @@ namespace MvcApplication1.Controllers
         public string Id { get; set; }
         public string Name { get; set; }
         public string Town { get; set; }
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
 
-        public Place(string _Id, string _Name, string _Town, decimal _Latitude, decimal _Longitude)
+        public Place(string _Id, string _Name, string _Town, decimal? _Latitude, decimal? _Longitude)
         {
             this.Id = _Id;
             this.Name = _Name;
@@ -78,7 +78,7 @@ namespace MvcApplication1.Controllers
                     query.ConstantScore(csq => 
                         csq.Filter(filter =>
                             filter.Term(x =>
-                                x.Location, _Location))
+                                x.Town, _Location))
                            .Query(q =>
                                 q.Term(p => p.Name, Keyword))))
                 .Take(20));

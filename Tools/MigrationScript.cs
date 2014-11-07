@@ -134,7 +134,8 @@ namespace Tools
                 {
                     //Place
                     // Place placeElastic = new Place(place.LieuEvenement_id.ToString(), place.Nom, place.Ville);
-                    Place eventPlace = new Place(_event.LieuEvenement_id.ToString(), _event.EVE_LieuEvenement.Nom, _event.EVE_LieuEvenement.Ville);
+                    Place eventPlace = new Place(_event.LieuEvenement_id.ToString(), _event.EVE_LieuEvenement.Nom, _event.EVE_LieuEvenement.Ville,
+                                _event.EVE_LieuEvenement.Latitude, _event.EVE_LieuEvenement.Longitude);
 
                     //Create entity into LUCENE
                     //WARNING -- TImeslot missing --
