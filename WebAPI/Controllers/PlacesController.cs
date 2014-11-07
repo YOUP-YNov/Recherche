@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Nest;
 using System.Web.Http;
-using Newtonsoft.Json;
 
 namespace MvcApplication1.Controllers
 {
@@ -13,13 +12,17 @@ namespace MvcApplication1.Controllers
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Location { get; set; }
+        public string Town { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
 
-        public Place(string _Id, string _Name, string _Location)
+        public Place(string _Id, string _Name, string _Town, decimal _Latitude, decimal _Longitude)
         {
             this.Id = _Id;
             this.Name = _Name;
-            this.Location = _Location;
+            this.Town = _Town;
+            this.Latitude = _Latitude;
+            this.Longitude = _Longitude;
         }
     }
 

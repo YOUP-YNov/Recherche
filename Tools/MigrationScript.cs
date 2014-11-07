@@ -88,7 +88,7 @@ namespace Tools
                              select p).ToList<EVE_LieuEvenement>();
                 
                 foreach(var place in places){
-                    Place placeElastic = new Place(place.LieuEvenement_id.ToString(), place.Nom, place.Ville);
+                    Place placeElastic = new Place(place.LieuEvenement_id.ToString(), place.Nom, place.Ville, place.Latitude, place.Longitude);
                     var indexP = elastic.Index(placeElastic);
                 }
             }
