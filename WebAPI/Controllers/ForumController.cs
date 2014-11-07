@@ -24,7 +24,7 @@ namespace MvcApplication1.Controllers
 
     }
 
-    public class ForumController : ApiController
+    public class forumController : ApiController
     {
         //
         // GET: /Forum/

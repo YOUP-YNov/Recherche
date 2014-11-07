@@ -31,7 +31,7 @@ namespace MvcApplication1.Controllers
 
     }
 
-    public class EventsController : ApiController
+    public class eventsController : ApiController
     {
         //
         // GET: /Events/

@@ -34,7 +34,7 @@ namespace MvcApplication1.Tests.Controllers
         public void GetById()
         {
             // Réorganiser
-            searchController controller = new searchController();
+            globalController controller = new globalController();
 
             // Agir
             string result = controller.Get(5);
@@ -47,7 +47,7 @@ namespace MvcApplication1.Tests.Controllers
         public void Post()
         {
             // Réorganiser
-            searchController controller = new searchController();
+            globalController controller = new globalController();
 
             // Agir
             controller.Post("value");
@@ -59,7 +59,7 @@ namespace MvcApplication1.Tests.Controllers
         public void Put()
         {
             // Réorganiser
-            searchController controller = new searchController();
+            globalController controller = new globalController();
 
             // Agir
             controller.Put(5, "value");
@@ -71,7 +71,7 @@ namespace MvcApplication1.Tests.Controllers
         public void Delete()
         {
             // Réorganiser
-            searchController controller = new searchController();
+            globalController controller = new globalController();
 
             // Agir
             controller.Delete(5);

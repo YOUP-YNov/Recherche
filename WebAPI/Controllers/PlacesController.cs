@@ -25,31 +25,28 @@ namespace MvcApplication1.Controllers
 
 
 
-    public class PlacesController : ApiController
+    public class placesController : ApiController
     {
-        //
-        // GET: /Places/
-
         public void AddPlace(Place place)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(place);
         }
 
-        public string SimpleSearchPlace(/*string Keyword*/)
+        public IEnumerable<Place> SimpleSearchPlaces()
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             //Search
             var searchResults = client.Search<Place>(s => s
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Name, "test")
+            .Term(p => p.Name, nvc["keyword"])
                 )
             );
-
-            return searchResults.Total.ToString();
+            
+            return searchResults.Documents;
 
           /*  Assert.NotNull(result);
             Assert.True(result.Success);

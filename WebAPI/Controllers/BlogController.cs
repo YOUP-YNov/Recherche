@@ -57,33 +57,28 @@ namespace MvcApplication1.Controllers
 
 
 
-    public class BlogController : ApiController
+    public class blogController : ApiController
     {
-        // GET search/blog/test
-        public string Get(string id)
-        {
-            return id;
-        }
-
         public void AddBlog(Blog blog)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(blog);
         }
 
-        // GET search/blog/SimpleSearchBlog/test
-        public string SimpleSearchBlog(string id)
+        // GET search/blog/get
+        public IEnumerable<Blog> SimpleSearchBlog()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Blog>(s => s
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Name, id)
+            .Term(p => p.Name, nvc["keyword"])
                 )
             );
-            return "test";
+            return searchResults.Documents;
         }
 
         public void AddBlogPost(BlogPost blogpost)

@@ -5,10 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Nest;
+using System.Web;
 
 namespace MvcApplication1.Controllers
 {
-    public class searchController : ApiController
+    public class globalController : ApiController
     {
         // GET search/values
         /*public string[] GetPlaces()
@@ -24,30 +25,15 @@ namespace MvcApplication1.Controllers
             return testArray.ToArray<string>();
         }*/
 
-        // GET search/values/5
-        public string Get(string type)
+        // GET search/get
+        public string Get()
         {
-            switch (type)
-            {
-                case "blog":
-                    return type;
-                case "event":
-                    return type;
-                case "forum":
-                    return type;
-                case "place":
-                    return type;
-                case "profile":
-                    return type;
-            }
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+
 
             return "default";
         }
 
-        public string Get()
-        {
-            return "test"; 
-        }
 
         // POST search/values
         public void Post([FromBody]string value)
