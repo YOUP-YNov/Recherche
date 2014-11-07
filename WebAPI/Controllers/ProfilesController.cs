@@ -43,22 +43,27 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
-        public void SimpleSearchProfile(string Keyword)
+        public void SimpleSearchProfile()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Profile>(s => s
             .From(0)
             .Size(10)
             .Query(q => q
-                .Term(p => p.Pseudo, Keyword)
+                .Term(p => p.Pseudo, nvc["keyword"])
                 )
             // Add OR LName - FName
             );
         }
 
-        public void AdvancedSearchProfile(string Keyword, string FName, string LName, int Age)
+        public void AdvancedSearchProfile()
         {
+
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             //recherche avancée if all parameters != null
@@ -67,15 +72,15 @@ namespace MvcApplication1.Controllers
                     query.ConstantScore(csq =>
                         csq.Filter(filter =>
                                 filter.Term(x =>
-                                    x.Lastname, LName))
+                                    x.Lastname, nvc["lastname"]))
                             .Filter(filter =>
                                 filter.Term(x =>
-                                    x.Firstname, FName))
+                                    x.Firstname, nvc["firstname"]))
                             .Filter(filter =>
                                 filter.Term(x =>
-                                    x.Age, Age))
+                                    x.Age, nvc["age"]))
                            .Query(q =>
-                                q.Term(p => p.Pseudo, Keyword))))
+                                q.Term(p => p.Pseudo, nvc["keyword"]))))
                 .Take(20));
         }
 
