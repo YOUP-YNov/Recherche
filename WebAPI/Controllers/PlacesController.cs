@@ -36,7 +36,7 @@ namespace MvcApplication1.Controllers
             var index = client.Index(place);
         }
 
-        public string SimpleSearchPlace(/*string Keyword*/)
+        public string SimpleSearchPlace(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -45,11 +45,12 @@ namespace MvcApplication1.Controllers
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Name, "test")
+                .Term(p => p.Name, Keyword)
                 )
             );
 
             return searchResults.Total.ToString();
+
 
           /*  Assert.NotNull(result);
             Assert.True(result.Success);
@@ -80,7 +81,7 @@ namespace MvcApplication1.Controllers
                                 x.Location, _Location))
                            .Query(q =>
                                 q.Term(p => p.Name, Keyword))))
-                .Take(100));
+                .Take(20));
 
              /* Exemple utilisation en stockage
              **var PlacesInLocation = new CollectionDePlaces

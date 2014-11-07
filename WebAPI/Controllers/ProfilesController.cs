@@ -65,8 +65,14 @@ namespace MvcApplication1.Controllers
                 body.Query(query =>
                     query.ConstantScore(csq =>
                         csq.Filter(filter =>
-                            filter.Term(x =>
-                                x.Lastname, LName))
+                                filter.Term(x =>
+                                    x.Lastname, LName))
+                            .Filter(filter =>
+                                filter.Term(x =>
+                                    x.Firstname, FName))
+                            .Filter(filter =>
+                                filter.Term(x =>
+                                    x.Age, Age))
                            .Query(q =>
                                 q.Term(p => p.Pseudo, Keyword))))
                 .Take(100));
