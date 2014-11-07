@@ -8,7 +8,7 @@ using Nest;
 
 namespace MvcApplication1.Controllers
 {
-    public class GeneralSearchController : ApiController
+    public class searchController : ApiController
     {
         // GET search/values
         public string[] GetPlaces()

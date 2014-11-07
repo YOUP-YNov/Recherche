@@ -172,7 +172,7 @@
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
-    <Compile Include="Controllers\GeneralSearchController.cs" />
+    <Compile Include="Controllers\searchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
