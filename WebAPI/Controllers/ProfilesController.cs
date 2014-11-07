@@ -60,7 +60,8 @@ namespace MvcApplication1.Controllers
         public void AdvancedSearchProfile(string Keyword, string FName, string LName, int Age)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            //TODO filtres multiples
+
+            //recherche avancée if all parameters != null
             var searchResults = client.Search<Profile>(body =>
                 body.Query(query =>
                     query.ConstantScore(csq =>
@@ -75,7 +76,7 @@ namespace MvcApplication1.Controllers
                                     x.Age, Age))
                            .Query(q =>
                                 q.Term(p => p.Pseudo, Keyword))))
-                .Take(100));
+                .Take(20));
         }
 
     }

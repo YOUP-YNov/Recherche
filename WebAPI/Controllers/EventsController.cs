@@ -55,5 +55,28 @@ namespace MvcApplication1.Controllers
             );
         }
 
+        public void AdvancedSearchEvent(string Keyword, string Type, string Where, DateTime Date)
+        {
+
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+
+            //advanced search all parameters
+            var searchResults = client.Search<Event>(body =>
+            body.Query(query =>
+                query.ConstantScore(csq =>
+                    csq.Filter(filter =>
+                            filter.Term(x =>
+                                x.Date, Date))
+                        .Filter(filter =>
+                            filter.Term(x =>
+                                x.EPlace.Name, Where))
+                        .Filter(filter =>
+                            filter.Term(x =>
+                                x.Type, Type))
+                       .Query(q =>
+                            q.Term(p => p.Name, Keyword))))
+            .Take(20));
+        }
+
     }
 }

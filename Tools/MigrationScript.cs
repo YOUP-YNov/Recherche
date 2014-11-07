@@ -27,6 +27,10 @@ namespace Tools
             {
                 Console.WriteLine("Places ==> Done.");
             }
+            if (eventMigration(elastic))
+            {
+                Console.WriteLine("Events ==> Done.");
+            }
             if (userMigration(elastic))
             {
                 Console.WriteLine("Users ==> Done.");
@@ -100,8 +104,8 @@ namespace Tools
                 foreach (var user in users)
                 {
                     //Age (years only)
-                    var now = float.Parse(DateTime.Now.ToString("yyyy.MMdd"));
-                    var dob = float.Parse(user.DateNaissance.ToString("yyyy.MMdd"));
+                    var now = DateTime.Now.Year;
+                    var dob = user.DateNaissance.Year;
                     int userAge = (int)(now - dob);
                     //Create entity into LUCENE
                     Profile profileElastic = new Profile(user.Utilisateur_id.ToString(), user.Prenom, user.Nom, user.Pseudo, user.Situation, userAge, user.Sexe);
