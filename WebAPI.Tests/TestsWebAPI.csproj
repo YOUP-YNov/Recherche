@@ -113,8 +113,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestSearch.cs" />
+    <Compile Include="TestAdvancedSearch.cs" />
+    <Compile Include="TestRemove.cs" />
+    <Compile Include="TestAdd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
+    <Compile Include="TestUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

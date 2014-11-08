@@ -167,12 +167,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\blogController.cs" />
-    <Compile Include="Controllers\eventsController.cs" />
-    <Compile Include="Controllers\forumController.cs" />
-    <Compile Include="Controllers\placesController.cs" />
-    <Compile Include="Controllers\profilesController.cs" />
-    <Compile Include="Controllers\globalController.cs" />
+    <Compile Include="Controllers\addController.cs" />
+    <Compile Include="Controllers\advancedsearchController.cs" />
+    <Compile Include="Controllers\removeController.cs" />
+    <Compile Include="Controllers\searchController.cs" />
+    <Compile Include="Controllers\updateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -303,6 +302,10 @@
     <ProjectReference Include="..\ClassLibrary1\RechercheDal.csproj">
       <Project>{946a2625-0969-457f-b987-459755a2c6b1}</Project>
       <Name>RechercheDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\RechercheBll.csproj">
+      <Project>{8e3aaa5a-ad34-4b10-b473-42caaa29c298}</Project>
+      <Name>RechercheBll</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
