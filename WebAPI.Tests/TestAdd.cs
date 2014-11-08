@@ -11,6 +11,8 @@ namespace MvcApplication1.Tests
         {
         }
 
+        // * Verifie le bon fonctionnement de la méthode add
+        // * Pour chaque type d'élément
         [TestMethod]
         public void TestMethod1()
         {

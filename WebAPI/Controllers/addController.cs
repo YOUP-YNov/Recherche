@@ -1,48 +1,78 @@
-﻿using RechercheDal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using RechercheDal;
+
+
 
 namespace MvcApplication1.Controllers
 {
     public class addController : ApiController
     {
-        public bool _place(Place XPlace)
-        {
-            return true;
-        }
 
         public bool _blog(Blog XBlog)
         {
+            blogController controller = new blogController();
+            controller.AddBlog(XBlog);
             return true;
         }
 
         public bool _blogpost(BlogPost XBlogPost)
         {
+            blogController controller = new blogController();
+            controller.AddBlogPost(XBlogPost);
             return true;
         }
 
         public bool _blogpostcomment(BlogPostComment XBlogPostComment)
         {
+            blogController controller = new blogController();
+            controller.AddBlogPostComment(XBlogPostComment);
             return true;
         }
 
-        public bool _event(Event XEvent)
+        public bool _event()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            decimal? latitude = decimal.Parse(nvc["latitude"]);
+            decimal? longitude = decimal.Parse(nvc["longitude"]);
+            Place XPlace = new Place(nvc["id"], nvc["name"], nvc["town"], latitude, longitude);
+            Event XEvent = new Event(nvc["id"], nvc["name"], long.Parse(nvc["type"]), DateTime.Parse(nvc["date"]), XPlace, nvc["adresse"]);
+            eventsController controller = new eventsController();
+            controller.AddEvent(XEvent);
             return true;
         }
 
-        public bool _profile(Profile XProfile)
+        public bool _place()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            decimal? latitude = decimal.Parse(nvc["latitude"]);
+            decimal? longitude = decimal.Parse(nvc["longitude"]);
+            Place XPlace = new Place(nvc["id"], nvc["name"], nvc["town"], latitude, longitude);
+            placesController controller = new placesController();
+            controller.AddPlace(XPlace);
             return true;
         }
 
-        public bool _postforul(PostForum XPostForum)
+        public bool _profile()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            Profile XProfile = new Profile(nvc["id"], nvc["firstname"], nvc["lastName"], nvc["pseudo"], nvc["activity"], Int32.Parse(nvc["age"]), bool.Parse(nvc["sex"]));
+            ProfilesController controller = new ProfilesController();
+            controller.AddProfile(XProfile);
+            return true;
+        }
+
+        public bool _postforum()
+        {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            PostForum XPostForum = new PostForum(nvc["id"], nvc["board"], nvc["content"], DateTime.Parse(nvc["date"]), nvc["author"]);
+            forumController controller = new forumController();
+            controller.AddPostForum(XPostForum);
             return true;
         }
     }
