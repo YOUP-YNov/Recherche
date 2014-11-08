@@ -299,6 +299,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\RechercheDal.csproj">
+      <Project>{946a2625-0969-457f-b987-459755a2c6b1}</Project>
+      <Name>RechercheDal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebAPI\WebAPI.csproj">
       <Project>{9a6f1354-5057-40f9-aece-babdf27a73d4}</Project>
       <Name>WebAPI</Name>
