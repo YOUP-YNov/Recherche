@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsWebAPI", "WebAPI.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{BB7C4AB4-D1B6-4DC2-A78F-CD5804C2BEA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheDal", "ClassLibrary1\RechercheDal.csproj", "{946A2625-0969-457F-B987-459755A2C6B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheDal", "RechercheDAL\RechercheDal.csproj", "{946A2625-0969-457F-B987-459755A2C6B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheBll", "MvcApplication1\RechercheBll.csproj", "{C5C1E99A-5C06-4127-B0F3-95562A725939}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheBll", "RechercheBLL\RechercheBll.csproj", "{C5C1E99A-5C06-4127-B0F3-95562A725939}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
