@@ -21,6 +21,12 @@ namespace MvcApplication1.Controllers
             var index = client.Index(postforum);
         }
 
+        public void RemovePostForum(PostForum postforum)
+        {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            client.Delete(new DeleteRequest(postforum.Id, "postforums", "1"));
+        }
+
         public void SimpleSearchPostForum(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();

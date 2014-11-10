@@ -32,6 +32,27 @@ namespace MvcApplication1.Controllers
             var index = client.Index(blogpostcomment);
         }
 
+        public void RemoveBlog(Blog blog)
+        {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            client.Delete(new DeleteRequest(blog.Id, "blogs", "1"));
+
+        }
+
+        public void RemoveBlogPost(BlogPost blogpost)
+        {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            client.Delete(new DeleteRequest(blogpost.Id, "blogposts", "1"));
+
+        }
+
+        public void RemoveBlogPostComment(BlogPostComment blogpostcomment)
+        {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            client.Delete(new DeleteRequest(blogpostcomment.Id, "blogpostcomments", "1"));
+
+        }
+
         // GET search/blog/get
         public IEnumerable<Blog> SimpleSearchBlog()
         {
@@ -63,11 +84,7 @@ namespace MvcApplication1.Controllers
          //   return searchResults.Documents;
         }
 
-        public void AddBlog(BlogPostComment blogpostcomment)
-        {
-            ElasticClient client = YoupElasticSearch.InitializeConnection();
-            var index = client.Index(blogpostcomment);
-        }
+
         public void SimpleSearchBlogComment(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();

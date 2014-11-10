@@ -23,6 +23,12 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
+        public void RemoveProfile(Profile profile)
+        {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            client.Delete(new DeleteRequest(profile.Id, "profiles", "1"));
+        }
+
         public IEnumerable<Profile> GetSimpleSearchProfile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
