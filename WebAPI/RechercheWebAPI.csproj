@@ -282,13 +282,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RechercheBLLC\RechercheBLLC.csproj">
+      <Project>{dac0f56f-9284-4d45-a24d-c06bb134ba55}</Project>
+      <Name>RechercheBLLC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RechercheDAL\RechercheDal.csproj">
       <Project>{946a2625-0969-457f-b987-459755a2c6b1}</Project>
       <Name>RechercheDal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RechercheBLL\RechercheBll.csproj">
-      <Project>{c5c1e99a-5c06-4127-b0f3-95562a725939}</Project>
-      <Name>RechercheBll</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

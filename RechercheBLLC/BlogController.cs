@@ -6,7 +6,7 @@ using RechercheDal;
 using Nest;
 using Tools;
 
-namespace MvcApplication1.Controllers
+namespace ControllersBll
 {
 
     public class blogController
