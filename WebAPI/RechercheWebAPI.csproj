@@ -282,11 +282,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\RechercheDal.csproj">
+    <ProjectReference Include="..\RechercheDAL\RechercheDal.csproj">
       <Project>{946a2625-0969-457f-b987-459755a2c6b1}</Project>
       <Name>RechercheDal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvcApplication1\RechercheBll.csproj">
+    <ProjectReference Include="..\RechercheBLL\RechercheBll.csproj">
       <Project>{c5c1e99a-5c06-4127-b0f3-95562a725939}</Project>
       <Name>RechercheBll</Name>
     </ProjectReference>
