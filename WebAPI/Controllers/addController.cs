@@ -14,22 +14,28 @@ namespace MvcApplication1.Controllers
     public class addController : ApiController
     {
 
-        public bool _blog(Blog XBlog)
+        public bool _blog()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            Blog XBlog = new Blog(nvc["id"], nvc["content"], nvc["category"]);
             blogController controller = new blogController();
             controller.AddBlog(XBlog);
             return true;
         }
 
-        public bool _blogpost(BlogPost XBlogPost)
+        public bool _blogpost()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            BlogPost XBlogPost = new BlogPost(nvc["id"], nvc["content"], nvc["author"], nvc["title"]);
             blogController controller = new blogController();
             controller.AddBlogPost(XBlogPost);
             return true;
         }
 
-        public bool _blogpostcomment(BlogPostComment XBlogPostComment)
+        public bool _blogpostcomment()
         {
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            BlogPostComment XBlogPostComment = new BlogPostComment(nvc["id"], nvc["content"], nvc["author"]);
             blogController controller = new blogController();
             controller.AddBlogPostComment(XBlogPostComment);
             return true;
