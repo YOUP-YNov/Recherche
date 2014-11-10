@@ -27,6 +27,12 @@ namespace MvcApplication1.Controllers
 
         }
 
+        public void UpdatePlace(Place oldplace, Place newplace)
+        {
+            RemovePlace(oldplace);
+            AddPlace(newplace);
+        }
+
         public IEnumerable<Place> SimpleSearchPlaces()
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();

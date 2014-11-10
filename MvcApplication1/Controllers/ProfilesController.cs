@@ -29,6 +29,12 @@ namespace MvcApplication1.Controllers
             client.Delete(new DeleteRequest(profile.Id, "profiles", "1"));
         }
 
+        public void UpdateProfile(Profile oldprofile, Profile newprofile)
+        {
+            AddProfile(newprofile);
+            RemoveProfile(oldprofile);
+        }
+
         public IEnumerable<Profile> GetSimpleSearchProfile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);

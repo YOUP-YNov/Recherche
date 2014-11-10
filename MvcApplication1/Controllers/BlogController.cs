@@ -53,6 +53,24 @@ namespace MvcApplication1.Controllers
 
         }
 
+        public void UpdateBlog(Blog oldblog, Blog newblog)
+        {
+            RemoveBlog(oldblog);
+            AddBlog(newblog);
+        }
+
+        public void UpdateBlogPost(BlogPost oldblogpost, BlogPost newblogpost)
+        {
+            RemoveBlogPost(oldblogpost);
+            AddBlogPost(newblogpost);
+        }
+
+        public void UpdateBlogPostComment(BlogPostComment oldblogpostcomment, BlogPostComment newblogpostcomment)
+        {
+            RemoveBlogPostComment(oldblogpostcomment);
+            AddBlogPostComment(newblogpostcomment);
+        }
+
         // GET search/blog/get
         public IEnumerable<Blog> SimpleSearchBlog()
         {

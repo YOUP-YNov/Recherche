@@ -28,6 +28,12 @@ namespace MvcApplication1.Controllers
             client.Delete(new DeleteRequest(_event.Id, "events", "1"));
         }
 
+        public void UpdateEvent(Event _oldevent, Event _newevent)
+        {
+            RemoveEvent(_oldevent);
+            AddEvent(_newevent);
+        }
+
         public void SimpleSearchEvent(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
