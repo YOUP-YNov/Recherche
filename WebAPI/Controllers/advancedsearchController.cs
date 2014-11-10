@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using ControllersBll;
+using RechercheDal;
 
 namespace MvcApplication1.Controllers
 {

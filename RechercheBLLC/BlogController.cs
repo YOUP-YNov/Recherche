@@ -69,16 +69,15 @@ namespace MvcApplication1.Controllers
         }
 
         // GET search/blog/get
-        public IEnumerable<Blog> SimpleSearchBlog()
+        public IEnumerable<Blog> SimpleSearchBlog(string keyword)
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Blog>(s => s
             .From(0)
             .Size(10)
             .Query(q => q
-            .Term(p => p.Name, nvc["keyword"])
+            .Term(p => p.Name, keyword)
                 )
             );
             return searchResults.Documents;
