@@ -31,7 +31,7 @@ namespace MvcApplication1.Controllers
             AddPostForum(newpostforum);
         }
 
-        public void SimpleSearchPostForum(string Keyword, string from, string take)
+        public ISearchResponse<PostForum> SimpleSearchPostForum(string Keyword, string from, string take)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -44,6 +44,8 @@ namespace MvcApplication1.Controllers
             .Term(p => p.content, Keyword)
                 )
             );
+
+            return searchResults;
         }
 
         public void AdvancedSearchForum(string Keyword, string Author, string Board, DateTime Date)

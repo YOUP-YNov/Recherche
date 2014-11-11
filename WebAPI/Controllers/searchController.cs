@@ -6,18 +6,20 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using ControllersBll;
+using RechercheDal;
+using Nest;
 
 namespace MvcApplication1.Controllers
 {
     public class searchController : ApiController
     {
-        public bool get()
+        public ISearchResponse<Profile> get()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
             //Search in Profiles
             profilesController Pcontroller = new profilesController();
-            Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]);
+            ISearchResponse<Profile> myListP = Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]);
 
             //Search in Blogs
             blogController Bcontroller = new blogController();
@@ -37,7 +39,15 @@ namespace MvcApplication1.Controllers
             forumController Fcontroller = new forumController();
             Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]);
 
-            return true;
+         /*   var myData = new List<Profile>();
+            foreach (var hit in myListP.Documents)
+            //foreach (var hit in results.Hits) //for Nest 1.0
+            {
+                myData.Add(hit.Source);
+            }*/
+
+            return myListP;
+
         }
     }
 }

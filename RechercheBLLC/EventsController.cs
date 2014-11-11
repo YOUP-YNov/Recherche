@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
             AddEvent(_newevent);
         }
 
-        public IEnumerable<Event> SimpleSearchEvent(string Keyword, string from, string take)
+        public ISearchResponse<Event> SimpleSearchEvent(string Keyword, string from, string take)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -46,7 +46,8 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Name, Keyword)
                 )
             );
-            return searchResults.Documents;
+
+            return searchResults;
         }
 
         public void AdvancedSearchEvent(string Keyword, string Type, string Where, DateTime Date)

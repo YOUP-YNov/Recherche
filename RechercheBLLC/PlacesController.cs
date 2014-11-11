@@ -30,7 +30,7 @@ namespace MvcApplication1.Controllers
             AddPlace(newplace);
         }
 
-        public IEnumerable<Place> SimpleSearchPlace(string keyword, string from, string take)
+        public ISearchResponse<Place> SimpleSearchPlace(string keyword, string from, string take)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -45,7 +45,7 @@ namespace MvcApplication1.Controllers
                 )
             );
             
-            return searchResults.Documents;
+            return searchResults;
         }
 
         public void AdvancedSearchPlace(string Keyword, string _Location)

@@ -31,7 +31,7 @@ namespace MvcApplication1.Controllers
             RemoveProfile(oldprofile);
         }
 
-        public IEnumerable<Profile> SimpleSearchProfile(string from, string take, string keyword)
+        public ISearchResponse<Profile> SimpleSearchProfile(string from, string take, string keyword)
         {
             // ¯\_(ツ)_/¯ PARSRTESTR !!
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
@@ -48,10 +48,10 @@ namespace MvcApplication1.Controllers
             // Add OR LName - FName
             );
 
-            return searchResults.Documents;
+            return searchResults;
         }
 
-        public IEnumerable<Profile> AdvancedSearchProfile(string from, string take, string keyword, string age)
+        public ISearchResponse<Profile> AdvancedSearchProfile(string from, string take, string keyword, string age)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -69,7 +69,7 @@ namespace MvcApplication1.Controllers
             .From(ParsRtesR.Intfrom)
             .Take(ParsRtesR.Inttake));
 
-            return searchResults.Documents;
+            return searchResults;
         }
 
     }

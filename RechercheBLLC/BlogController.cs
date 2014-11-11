@@ -69,7 +69,7 @@ namespace ControllersBll
         }
 
 
-        public IEnumerable<Blog> SimpleSearchBlog(string keyword, string from, string take)
+        public ISearchResponse<Blog> SimpleSearchBlog(string keyword, string from, string take)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -82,10 +82,10 @@ namespace ControllersBll
             .Term(p => p.Name, keyword)
                 )
             );
-            return searchResults.Documents;
+            return searchResults;
         }
 
-        public IEnumerable<BlogPost> SimpleSearchBlogPost(string keyword, string from, string take)
+        public ISearchResponse<BlogPost> SimpleSearchBlogPost(string keyword, string from, string take)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -98,12 +98,11 @@ namespace ControllersBll
             .Term(p => p.Title, keyword)
                 )
             );
-            return searchResults.Documents;
-         //   return searchResults.Documents;
+            return searchResults;
         }
 
 
-        public IEnumerable<BlogPostComment> SimpleSearchBlogComment(string keyword, string from, string take)
+        public ISearchResponse<BlogPostComment> SimpleSearchBlogComment(string keyword, string from, string take)
         {
             ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
@@ -116,7 +115,7 @@ namespace ControllersBll
             .Term(p => p.Content, keyword)
                 )
             );
-            return searchResults.Documents;
+            return searchResults;
 
         }
 
