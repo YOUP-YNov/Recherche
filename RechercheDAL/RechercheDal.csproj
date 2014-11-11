@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Blog.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="IntParsRTestR.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="PostForum.cs" />
     <Compile Include="Profile.cs" />

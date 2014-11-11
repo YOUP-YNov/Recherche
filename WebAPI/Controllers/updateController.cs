@@ -12,7 +12,7 @@ namespace MvcApplication1.Controllers
 {
     public class updateController : ApiController
     {
-        public bool _blog()
+        public bool get_blog()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             Blog XOldBlog = new Blog(nvc["idO"], nvc["contentO"], nvc["categoryO"]);
@@ -22,7 +22,7 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool _blogpost()
+        public bool get_blogpost()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             BlogPost XOlgBlogPost = new BlogPost(nvc["idO"], nvc["contentO"], nvc["authorO"], nvc["titleO"]);
@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool _blogpostcomment()
+        public bool get_blogpostcomment()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             BlogPostComment XOldBlogPostComment = new BlogPostComment(nvc["idO"], nvc["contentO"], nvc["authorO"]);
@@ -42,7 +42,7 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool _event()
+        public bool get_event()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             decimal? latitudeO = decimal.Parse(nvc["latitudeO"]);
@@ -58,7 +58,7 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool _place()
+        public bool get_place()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             decimal? latitudeO = decimal.Parse(nvc["latitudeO"]);
@@ -72,17 +72,17 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool _profile()
+        public bool get_profile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             Profile XOldProfile = new Profile(nvc["idO"], nvc["firstnameO"], nvc["lastNameO"], nvc["pseudoO"], nvc["activityO"], Int32.Parse(nvc["ageO"]), bool.Parse(nvc["sexO"]));
             Profile XNewProfile = new Profile(nvc["idN"], nvc["firstnameN"], nvc["lastNameN"], nvc["pseudoN"], nvc["activityN"], Int32.Parse(nvc["ageN"]), bool.Parse(nvc["sexN"]));
-            ProfilesController controller = new ProfilesController();
+            profilesController controller = new profilesController();
             controller.UpdateProfile(XOldProfile, XNewProfile);
             return true;
         }
 
-        public bool _postforum()
+        public bool get_postforum()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             PostForum XOldPostForum = new PostForum(nvc["idO"], nvc["boardO"], nvc["contentO"], DateTime.Parse(nvc["dateO"]), nvc["authorO"]);

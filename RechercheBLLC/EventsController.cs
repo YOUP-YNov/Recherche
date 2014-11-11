@@ -23,7 +23,6 @@ namespace MvcApplication1.Controllers
         public void RemoveEvent(Event _event)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            //client.Delete(new DeleteRequest(_event.Id, "event", _event.Id));
             client.Delete<Event>(_event.Id);
         }
 
@@ -33,14 +32,16 @@ namespace MvcApplication1.Controllers
             AddEvent(_newevent);
         }
 
-        public IEnumerable<Event> SimpleSearchEvent(string Keyword)
+        public IEnumerable<Event> SimpleSearchEvent(string Keyword, string from, string take)
         {
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             //Search
             var searchResults = client.Search<Event>(s => s
-            .From(0)
-            .Size(10)
+            .From(ParsRtesR.Intfrom)
+            .Size(ParsRtesR.Inttake)
             .Query(q => q
             .Term(p => p.Name, Keyword)
                 )

@@ -30,25 +30,22 @@ namespace MvcApplication1.Controllers
             AddPlace(newplace);
         }
 
-        public IEnumerable<Place> SimpleSearchPlaces(string keyword)
+        public IEnumerable<Place> SimpleSearchPlace(string keyword, string from, string take)
         {
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             //Search
             var searchResults = client.Search<Place>(s => s
-            .From(0)
-            .Size(10)
+            .From(ParsRtesR.Intfrom)
+            .Take(ParsRtesR.Inttake)
             .Query(q => q
             .Term(p => p.Name, keyword)
                 )
             );
             
             return searchResults.Documents;
-
-
-          /*  Assert.NotNull(result);
-            Assert.True(result.Success);
-            Assert.IsNotEmpty(result.Result);*/
         }
 
         public void AdvancedSearchPlace(string Keyword, string _Location)

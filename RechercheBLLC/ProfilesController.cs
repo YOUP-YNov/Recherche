@@ -5,16 +5,13 @@ using System.Web;
 using Tools;
 using RechercheDal;
 using Nest;
-using System.Web;
 
 namespace MvcApplication1.Controllers
 {
 
     
-    public class ProfilesController
+    public class profilesController
     {
-        //
-        // GET: /Profiles/
 
         public void AddProfile(Profile profile)
         {
@@ -34,18 +31,10 @@ namespace MvcApplication1.Controllers
             RemoveProfile(oldprofile);
         }
 
-        public IEnumerable<Profile> GetSimpleSearchProfile(string from, string take, string keyword)
+        public IEnumerable<Profile> SimpleSearchProfile(string from, string take, string keyword)
         {
-            int Intfrom, Inttake;
-
-            //Test parameters FROM & SET if null
-            if (from == null) { Intfrom = 0; }
-            //Else GET parameter From
-            else { Intfrom = Int32.Parse(from); }
-            //Test parameters TAKE & SET if null
-            if ((take == null) || (Int32.Parse(take) == 0)) { Inttake = 20; }
-            //Else GET parameters From && TAKE from URL
-            else { Inttake = Int32.Parse(take); }
+            // ¯\_(ツ)_/¯ PARSRTESTR !!
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
@@ -53,8 +42,8 @@ namespace MvcApplication1.Controllers
             .Query(q => q
                 .Term(p => p.Firstname, keyword)
                 )
-                .From(Intfrom)
-                .Take(Inttake)
+                .From(ParsRtesR.Intfrom)
+                .Take(ParsRtesR.Inttake)
 
             // Add OR LName - FName
             );
@@ -62,23 +51,14 @@ namespace MvcApplication1.Controllers
             return searchResults.Documents;
         }
 
-        public IEnumerable<Profile> GetAdvancedSearchProfile(string from, string take, string keyword, string age)
+        public IEnumerable<Profile> AdvancedSearchProfile(string from, string take, string keyword, string age)
         {
-            int Intfrom, Inttake;
-
-            //Test parameters FROM & SET if null
-            if (from == null) { Intfrom = 0; }
-            //Else GET parameter From
-            else { Intfrom = Int32.Parse(from); }
-            //Test parameters TAKE & SET if null
-            if ((take == null) || (Int32.Parse(take) == 0)) { Inttake = 20; }
-            //Else GET parameters From && TAKE from URL
-            else { Inttake = Int32.Parse(take); }
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
-            // Solution - Pas trop perf
-            //Search per location
+            //Solution - Pas trop perf
+            //Search per location TODO
             var searchResults = client.Search<Profile>(body => 
                 body.Filter(filter =>
                     filter.Term(x =>
@@ -86,27 +66,8 @@ namespace MvcApplication1.Controllers
                     .Query(q => q
                         .Term(p => p.Firstname, keyword)  
                         )
-            .Take(100));
-
-            /*
-            //recherche avancée if all parameters != null
-            var searchResults = client.Search<Profile>(body =>
-                body.Query(query =>
-                    query.ConstantScore(csq =>
-                        csq.Filter(filter =>
-                                filter.Term(x =>
-                                    x.Lastname, nvc["lastname"]))
-                            .Filter(filter =>
-                                filter.Term(x =>
-                                    x.Firstname, nvc["firstname"]))
-                            .Filter(filter =>
-                                filter.Term(x =>
-                                    x.Age, nvc["age"]))
-                           .Query(q =>
-                                q.Term(p => p.Firstname, nvc["keyword"]))))
-                .Take(take)
-                .From(from));
-            */
+            .From(ParsRtesR.Intfrom)
+            .Take(ParsRtesR.Inttake));
 
             return searchResults.Documents;
         }

@@ -68,14 +68,16 @@ namespace ControllersBll
             AddBlogPostComment(newblogpostcomment);
         }
 
-        // GET search/blog/get
-        public IEnumerable<Blog> SimpleSearchBlog(string keyword)
+
+        public IEnumerable<Blog> SimpleSearchBlog(string keyword, string from, string take)
         {
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Blog>(s => s
-            .From(0)
-            .Size(10)
+            .From(ParsRtesR.Intfrom)
+            .Size(ParsRtesR.Intfrom)
             .Query(q => q
             .Term(p => p.Name, keyword)
                 )
@@ -83,15 +85,17 @@ namespace ControllersBll
             return searchResults.Documents;
         }
 
-        public IEnumerable<BlogPost> SimpleSearchBlogPost(string Keyword)
+        public IEnumerable<BlogPost> SimpleSearchBlogPost(string keyword, string from, string take)
         {
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<BlogPost>(s => s
-            .From(0)
-            .Size(10)
+            .From(ParsRtesR.Intfrom)
+            .Size(ParsRtesR.Intfrom)
             .Query(q => q
-            .Term(p => p.Title, Keyword)
+            .Term(p => p.Title, keyword)
                 )
             );
             return searchResults.Documents;
@@ -99,17 +103,20 @@ namespace ControllersBll
         }
 
 
-        public void SimpleSearchBlogComment(string Keyword)
+        public IEnumerable<BlogPostComment> SimpleSearchBlogComment(string keyword, string from, string take)
         {
+            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<BlogPostComment>(s => s
-            .From(0)
-            .Size(10)
+            .From(ParsRtesR.Intfrom)
+            .Size(ParsRtesR.Intfrom)
             .Query(q => q
-            .Term(p => p.Content, Keyword)
+            .Term(p => p.Content, keyword)
                 )
             );
+            return searchResults.Documents;
 
         }
 

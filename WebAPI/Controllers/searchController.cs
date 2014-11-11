@@ -11,27 +11,33 @@ namespace MvcApplication1.Controllers
 {
     public class searchController : ApiController
     {
-        // GET search/values
-        /*public string[] GetPlaces()
-        {
-            BlogController ControllerTest = new BlogController();
-            var tests = ControllerTest.SimpleSearchBlogPost("4");
-            
-            List<string> testArray = new List<string>();
-            foreach (var test in tests)
-            {
-                testArray.Add(test.Content);
-            }
-            return testArray.ToArray<string>();
-        }*/
-
-        // GET search/get
-        public string Get()
+        public bool get()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
+            //Search in Profiles
+            profilesController Pcontroller = new profilesController();
+            Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]);
 
-            return "default";
+            //Search in Blogs
+            blogController Bcontroller = new blogController();
+            Bcontroller.SimpleSearchBlog(nvc["keyword"], nvc["from"], nvc["take"]);
+            Bcontroller.SimpleSearchBlogPost(nvc["keyword"], nvc["from"], nvc["take"]);
+            Bcontroller.SimpleSearchBlogComment(nvc["keyword"], nvc["from"], nvc["take"]);
+
+            //Search in Places
+            eventsController Econtroller = new eventsController();
+            Econtroller.SimpleSearchEvent(nvc["keyword"], nvc["from"], nvc["take"]);
+
+            //Search in Events
+            placesController PLcontroller = new placesController();
+            PLcontroller.SimpleSearchPlace(nvc["keyword"], nvc["from"], nvc["take"]);
+
+            //Search in Forum
+            forumController Fcontroller = new forumController();
+            Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]);
+
+            return true;
         }
     }
 }
