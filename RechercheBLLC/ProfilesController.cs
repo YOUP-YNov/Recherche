@@ -25,7 +25,7 @@ namespace MvcApplication1.Controllers
         public void RemoveProfile(Profile profile)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(profile.Id, "profiles", "1"));
+            client.Delete<Profile>(profile.Id);
         }
 
         public void UpdateProfile(Profile oldprofile, Profile newprofile)

@@ -37,7 +37,7 @@ namespace MvcApplication1.Tests
             foreach (var hit in searchResults.Hits)
                 resultats++;
 
-            //client.Delete(new DeleteRequest("500", "event", "1"));
+            controllerEvent.RemoveEvent(EventTest);
 
             Assert.AreEqual(1, resultats);
 

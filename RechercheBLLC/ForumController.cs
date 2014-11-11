@@ -22,7 +22,7 @@ namespace MvcApplication1.Controllers
         public void RemovePostForum(PostForum postforum)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(postforum.Id, "postforums", "1"));
+            client.Delete<PostForum>(postforum.Id);
         }
 
         public void UpdatePostForum(PostForum oldpostforum, PostForum newpostforum)

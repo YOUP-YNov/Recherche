@@ -21,8 +21,7 @@ namespace MvcApplication1.Controllers
         public void RemovePlace(Place place)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(place.Id, "places", "1"));
-
+            client.Delete<Place>(place.Id);
         }
 
         public void UpdatePlace(Place oldplace, Place newplace)

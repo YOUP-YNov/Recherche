@@ -23,7 +23,8 @@ namespace MvcApplication1.Controllers
         public void RemoveEvent(Event _event)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(_event.Id, "events", "1"));
+            //client.Delete(new DeleteRequest(_event.Id, "event", _event.Id));
+            client.Delete<Event>(_event.Id);
         }
 
         public void UpdateEvent(Event _oldevent, Event _newevent)

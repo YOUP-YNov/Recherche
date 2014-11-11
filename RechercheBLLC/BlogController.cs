@@ -32,21 +32,21 @@ namespace ControllersBll
         public void RemoveBlog(Blog blog)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(blog.Id, "blogs", "1"));
+            client.Delete<Blog>(blog.Id);
 
         }
 
         public void RemoveBlogPost(BlogPost blogpost)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(blogpost.Id, "blogposts", "1"));
+            client.Delete<BlogPost>(blogpost.Id);
 
         }
 
         public void RemoveBlogPostComment(BlogPostComment blogpostcomment)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete(new DeleteRequest(blogpostcomment.Id, "blogpostcomments", "1"));
+            client.Delete<BlogPostComment>(blogpostcomment.Id);
 
         }
 
