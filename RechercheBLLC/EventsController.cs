@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
             AddEvent(_newevent);
         }
 
-        public void SimpleSearchEvent(string Keyword)
+        public IEnumerable<Event> SimpleSearchEvent(string Keyword)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -44,6 +44,7 @@ namespace MvcApplication1.Controllers
             .Term(p => p.Name, Keyword)
                 )
             );
+            return searchResults.Documents;
         }
 
         public void AdvancedSearchEvent(string Keyword, string Type, string Where, DateTime Date)
