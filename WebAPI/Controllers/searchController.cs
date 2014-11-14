@@ -17,9 +17,15 @@ namespace MvcApplication1.Controllers
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
+            ISearchResponse<GenericResponse> myReturn;
+
             //Search in Profiles
             profilesController Pcontroller = new profilesController();
             ISearchResponse<Profile> myListP = Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]);
+            foreach(var profile in myListP.Hits)
+            {
+                
+            }
 
             //Search in Blogs
             blogController Bcontroller = new blogController();

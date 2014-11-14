@@ -34,7 +34,7 @@ namespace MvcApplication1.Controllers
         public ISearchResponse<Profile> SimpleSearchProfile(string from, string take, string keyword)
         {
             // ¯\_(ツ)_/¯ PARSRTESTR !!
-            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
@@ -53,7 +53,7 @@ namespace MvcApplication1.Controllers
 
         public ISearchResponse<Profile> AdvancedSearchProfile(string from, string take, string keyword, string age)
         {
-            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
