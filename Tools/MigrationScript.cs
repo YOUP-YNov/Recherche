@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nest;
-using MvcApplication1;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using MvcApplication1.Controllers;
+using RechercheDal;
 
 namespace Tools
 {

@@ -34,23 +34,20 @@ namespace MvcApplication1.Tests.Controllers
         public void GetById()
         {
             // Réorganiser
-            globalController controller = new globalController();
+            searchController controller = new searchController();
 
             // Agir
-            string result = controller.Get(5);
 
             // Déclarer
-            Assert.AreEqual("value", result);
         }
 
         [TestMethod]
         public void Post()
         {
             // Réorganiser
-            globalController controller = new globalController();
+            searchController controller = new searchController();
 
             // Agir
-            controller.Post("value");
 
             // Déclarer
         }
@@ -59,10 +56,9 @@ namespace MvcApplication1.Tests.Controllers
         public void Put()
         {
             // Réorganiser
-            globalController controller = new globalController();
+            searchController controller = new searchController();
 
             // Agir
-            controller.Put(5, "value");
 
             // Déclarer
         }
@@ -71,10 +67,9 @@ namespace MvcApplication1.Tests.Controllers
         public void Delete()
         {
             // Réorganiser
-            globalController controller = new globalController();
+            searchController controller = new searchController();
 
             // Agir
-            controller.Delete(5);
 
             // Déclarer
         }
