@@ -31,7 +31,7 @@ namespace MvcApplication1.Controllers
             RemoveProfile(oldprofile);
         }
 
-        public ISearchResponse<Profile> SimpleSearchProfile(string from, string take, string keyword)
+        public ISearchResponse<Profile> SimpleSearchProfile(string keyword, string from, string take)
         {
             // ¯\_(ツ)_/¯ PARSRTESTR !!
             IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
@@ -39,11 +39,11 @@ namespace MvcApplication1.Controllers
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Profile>(s => s
+            .From(ParsRtesR.Intfrom)
+            .Size(ParsRtesR.Inttake)
             .Query(q => q
-                .Term(p => p.Pseudo, keyword)
+            .Term(p => p.Pseudo, keyword)
                 )
-                .From(ParsRtesR.Intfrom)
-                .Take(ParsRtesR.Inttake)
 
             // Add OR LName - FName
             );
