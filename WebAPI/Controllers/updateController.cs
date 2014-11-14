@@ -75,8 +75,8 @@ namespace MvcApplication1.Controllers
         public bool get_profile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            Profile XOldProfile = new Profile(nvc["idO"], nvc["firstnameO"], nvc["lastNameO"], nvc["pseudoO"], nvc["activityO"], Int32.Parse(nvc["ageO"]), bool.Parse(nvc["sexO"]));
-            Profile XNewProfile = new Profile(nvc["idN"], nvc["firstnameN"], nvc["lastNameN"], nvc["pseudoN"], nvc["activityN"], Int32.Parse(nvc["ageN"]), bool.Parse(nvc["sexN"]));
+            Profile XOldProfile = new Profile(nvc["idO"], nvc["firstnameO"], nvc["lastNameO"], nvc["pseudoO"], nvc["activityO"], Int32.Parse(nvc["ageO"]), bool.Parse(nvc["sexO"]), nvc["townO"]);
+            Profile XNewProfile = new Profile(nvc["idN"], nvc["firstnameN"], nvc["lastNameN"], nvc["pseudoN"], nvc["activityN"], Int32.Parse(nvc["ageN"]), bool.Parse(nvc["sexN"]), nvc["townN"]);
             profilesController controller = new profilesController();
             controller.UpdateProfile(XOldProfile, XNewProfile);
             return true;

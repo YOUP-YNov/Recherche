@@ -65,7 +65,7 @@ namespace MvcApplication1.Controllers
         public bool get_profile()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            Profile XProfile = new Profile(nvc["id"], nvc["firstname"], nvc["lastName"], nvc["pseudo"], nvc["activity"], Int32.Parse(nvc["age"]), bool.Parse(nvc["sex"]));
+            Profile XProfile = new Profile(nvc["id"], nvc["firstname"], nvc["lastName"], nvc["pseudo"], nvc["activity"], Int32.Parse(nvc["age"]), bool.Parse(nvc["sex"]), nvc["town"]);
             profilesController controller = new profilesController();
             controller.RemoveProfile(XProfile);
             return true;

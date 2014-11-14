@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blog.cs" />
+    <Compile Include="DateParsRTestR.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="GenericResponse.cs" />
     <Compile Include="IntParsRTestR.cs" />
