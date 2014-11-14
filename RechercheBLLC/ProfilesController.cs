@@ -40,7 +40,7 @@ namespace MvcApplication1.Controllers
             //Search
             var searchResults = client.Search<Profile>(s => s
             .Query(q => q
-                .Term(p => p.Firstname, keyword)
+                .Term(p => p.Pseudo, keyword)
                 )
                 .From(ParsRtesR.Intfrom)
                 .Take(ParsRtesR.Inttake)

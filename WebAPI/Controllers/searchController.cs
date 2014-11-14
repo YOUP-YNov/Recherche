@@ -13,7 +13,7 @@ namespace MvcApplication1.Controllers
 {
     public class searchController : ApiController
     {
-        public GenericResponse get()
+        public IEnumerable<Profile> get()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
@@ -43,7 +43,7 @@ namespace MvcApplication1.Controllers
             forumController Fcontroller = new forumController();
             Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]);
 
-            return myReturn;
+            return myListP.Documents;
 
         }
     }
