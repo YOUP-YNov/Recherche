@@ -7,18 +7,16 @@ using RechercheDal;
 
 namespace RechercheDal
 {
-    class GenericResponse
+    public class GenericResponse
     {
+        public IEnumerable<Place> Gplace;
+        public IEnumerable<Event> Gevent;
+        public IEnumerable<Profile> Gprofile;
+        public IEnumerable<PostForum> Gpostforum;
+        public IEnumerable<Blog> Gblog;
+        public IEnumerable<BlogPost> Gblogpost;
+        public IEnumerable<BlogPostComment> Gblogpostcomment;
 
-        Place Gplace;
-        Event Gevent;
-        Profile Gprofile;
-        PostForum Gpostforum;
-        Blog Gblog;
-        BlogPost Gblogpost;
-        BlogPostComment Gblogpostcomment;
-
-        enum Type { Place, Event, Profile, PostForum, Blog, BlogPost, BlogPostComment };
-
+        public GenericResponse() { }
     }
 }

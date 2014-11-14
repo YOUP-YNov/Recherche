@@ -13,19 +13,17 @@ namespace MvcApplication1.Controllers
 {
     public class searchController : ApiController
     {
-        public ISearchResponse<Profile> get()
+        public GenericResponse get()
         {
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
-            ISearchResponse<GenericResponse> myReturn;
-
+            GenericResponse myReturn = new GenericResponse();
+            
             //Search in Profiles
             profilesController Pcontroller = new profilesController();
             ISearchResponse<Profile> myListP = Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]);
-            foreach(var profile in myListP.Hits)
-            {
-                
-            }
+            myReturn.Gprofile = myListP.Documents;
+            
 
             //Search in Blogs
             blogController Bcontroller = new blogController();
@@ -52,7 +50,7 @@ namespace MvcApplication1.Controllers
                 myData.Add(hit.Source);
             }*/
 
-            return myListP;
+            return myReturn;
 
         }
     }
