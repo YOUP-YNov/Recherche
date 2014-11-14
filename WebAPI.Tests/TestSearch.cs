@@ -41,9 +41,23 @@ namespace MvcApplication1.Tests
             Assert.AreEqual(1, searchResults.Total);
         }
 
+        [TestMethod]
+        public void TestSearchProfile()
+        {
+            Profile ProfileTest = new Profile("800", "Firstname test", "Lastname test", "Profile", "activity test", 20, true);
+            client.Index(ProfileTest);
+
+            var searchResults = controllerProfile.SimpleSearchProfile( "0", "1", "Profile"); //test de la recherche
+            Assert.AreEqual(1, searchResults.Total);
+        }
+
+
+
         [TestCleanup]
         public void TestCleanup()
         {
+            client.Delete<Event>("800");
+            client.Delete<Profile>("800");
         }
     }
 }
