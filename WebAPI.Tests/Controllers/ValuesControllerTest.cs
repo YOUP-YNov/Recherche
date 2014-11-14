@@ -29,7 +29,7 @@ namespace MvcApplication1.Tests.Controllers
             Assert.AreEqual("value1", result.ElementAt(0));
             Assert.AreEqual("value2", result.ElementAt(1));
         }*/
-
+        /*
         [TestMethod]
         public void GetById()
         {
@@ -72,6 +72,6 @@ namespace MvcApplication1.Tests.Controllers
             // Agir
 
             // Déclarer
-        }
+        }*/
     }
 }

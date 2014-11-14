@@ -6,7 +6,7 @@ namespace MvcApplication1.Tests
     [TestClass]
     public class TestAdvancedSearch
     {
-        [TestInitialize]
+      /*  [TestInitialize]
         public void TestInitialize()
         {
         }
@@ -19,6 +19,6 @@ namespace MvcApplication1.Tests
         [TestCleanup]
         public void TestCleanup()
         {
-        }
+        }*/
     }
 }
