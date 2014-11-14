@@ -48,8 +48,8 @@ namespace MvcApplication1.Tests
         [TestMethod]
         public void TestUpdateProfile()
         {
-            Profile ProfileTest = new Profile("700", "Firstname test", "Lastname test", "pseudo test", "activity test", 20, true);
-            Profile newProfile = new Profile("700", "Profile updated", "Lastname test", "pseudo test", "activity test", 20, true);
+            Profile ProfileTest = new Profile("700", "Firstname test", "Lastname test", "pseudo test", "activity test", 20, true, "Ville");
+            Profile newProfile = new Profile("700", "Profile updated", "Lastname test", "pseudo test", "activity test", 20, true, "Ville");
             client.Index(ProfileTest);
 
             controllerProfile.UpdateProfile(ProfileTest, newProfile); //test de la modification

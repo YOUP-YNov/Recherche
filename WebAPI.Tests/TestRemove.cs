@@ -46,7 +46,7 @@ namespace MvcApplication1.Tests
         [TestMethod]
         public void TestRemoveProfile()
         {
-            Profile ProfileTest = new Profile("600", "Firstname test", "Lastname test", "pseudo test", "activity test", 20, true);
+            Profile ProfileTest = new Profile("600", "Firstname test", "Lastname test", "pseudo test", "activity test", 20, true, "Ville");
             client.Index(ProfileTest);
 
             controllerProfile.RemoveProfile(ProfileTest); //test de la suppression

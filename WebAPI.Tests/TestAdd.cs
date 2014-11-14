@@ -45,7 +45,7 @@ namespace MvcApplication1.Tests
         [TestMethod]
         public void TestAddProfile()
         {
-            Profile ProfileTest = new Profile("500", "Firstname test", "Lastname test", "pseudo test", "activity test", 20, true);
+            Profile ProfileTest = new Profile("500", "Firstname test", "Lastname test", "pseudo test", "activity test", 20, true, "Ville");
 
             controllerProfile.AddProfile(ProfileTest); //test de l'ajout
 
