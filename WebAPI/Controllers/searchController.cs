@@ -31,24 +31,17 @@ namespace MvcApplication1.Controllers
             Bcontroller.SimpleSearchBlogPost(nvc["keyword"], nvc["from"], nvc["take"]);
             Bcontroller.SimpleSearchBlogComment(nvc["keyword"], nvc["from"], nvc["take"]);
 
-            //Search in Places
+            //Search in Events
             eventsController Econtroller = new eventsController();
             Econtroller.SimpleSearchEvent(nvc["keyword"], nvc["from"], nvc["take"]);
 
-            //Search in Events
+            //Search in Places
             placesController PLcontroller = new placesController();
             PLcontroller.SimpleSearchPlace(nvc["keyword"], nvc["from"], nvc["take"]);
 
             //Search in Forum
             forumController Fcontroller = new forumController();
             Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]);
-
-         /*   var myData = new List<Profile>();
-            foreach (var hit in myListP.Documents)
-            //foreach (var hit in results.Hits) //for Nest 1.0
-            {
-                myData.Add(hit.Source);
-            }*/
 
             return myReturn;
 
