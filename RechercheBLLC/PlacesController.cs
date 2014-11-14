@@ -40,8 +40,9 @@ namespace MvcApplication1.Controllers
             var searchResults = client.Search<Place>(s => s
             .From(ParsRtesR.Intfrom)
             .Take(ParsRtesR.Inttake)
-            .Query(q => q
-            .Term(p => p.Name, keyword)
+            .Query(q => 
+                q.Term(p => p.Name, keyword)
+                || q.Term(p => p.Town, keyword)
                 )
             );
             
