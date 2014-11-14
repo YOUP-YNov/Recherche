@@ -48,8 +48,9 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public void AdvancedSearchForum(string Keyword, string Author, string Board, DateTime Date)
+        public ISearchResponse<PostForum> AdvancedSearchForum(string from, string take, string Keyword, string Author, string Board, string Date)
         {
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -59,16 +60,17 @@ namespace MvcApplication1.Controllers
                 query.ConstantScore(csq =>
                     csq.Filter(filter =>
                             filter.Term(x =>
-                                x.board, Board))
-                        .Filter(filter =>
-                            filter.Term(x =>
-                                x.author, Author))
-                        .Filter(filter =>
-                            filter.Term(x =>
+                                x.board, Board)
+                            && filter.Term(x =>
+                                x.author, Author)
+                            && filter.Term(x =>
                                 x.date, Date))
                        .Query(q =>
                             q.Term(p => p.content, Keyword))))
-            .Take(20));
+            .From(ParsRtesR.Intfrom)
+            .Take(ParsRtesR.Inttake));
+
+            return searchResults;
         }
     }
 }

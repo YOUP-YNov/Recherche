@@ -48,38 +48,23 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public void AdvancedSearchPlace(string Keyword, string _Location)
+        public ISearchResponse<Place> AdvancedSearchPlace(string from, string take, string keyword, string _Location)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
-            /* Solution 1 - Pas trop perf
-            //Search per location
-            var searchResults = client.Search<Place>(body => 
-                body.Filter(filter =>
-                    filter.Term(x => 
-                        x.Location, _Location))
-                    .Query(q => q
-                        .Term(p => p.Name, Keyword)  
-                        )
-            .Take(100));*/
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
-            //Solution 2 - Plus perf
             var searchResults = client.Search<Place>(body =>
-                body.Query(query =>
-                    query.ConstantScore(csq => 
-                        csq.Filter(filter =>
-                            filter.Term(x =>
-                                x.Town, _Location))
-                           .Query(q =>
-                                q.Term(p => p.Name, Keyword))))
-                .Take(20));
+                body.Filter(filter =>
+                    filter.Term(x =>
+                        x.Town, _Location))
+                    .Query(q =>
+                        q.Term(p => p.Name, keyword)
+                        )
+            .From(ParsRtesR.Intfrom)
+            .Take(ParsRtesR.Inttake));
 
-             /* Exemple utilisation en stockage
-             **var PlacesInLocation = new CollectionDePlaces
-             **{
-                Name = Location
-             **  Places = searchResults.Documents.ToList()};
-             }*/
+            return searchResults;
         }
 
         public void SearchPlacesAround(ElasticClient client) { }
