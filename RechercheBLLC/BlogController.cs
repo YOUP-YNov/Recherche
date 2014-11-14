@@ -71,7 +71,7 @@ namespace ControllersBll
 
         public ISearchResponse<Blog> SimpleSearchBlog(string keyword, string from, string take)
         {
-            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
@@ -87,7 +87,7 @@ namespace ControllersBll
 
         public ISearchResponse<BlogPost> SimpleSearchBlogPost(string keyword, string from, string take)
         {
-            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
@@ -104,7 +104,7 @@ namespace ControllersBll
 
         public ISearchResponse<BlogPostComment> SimpleSearchBlogComment(string keyword, string from, string take)
         {
-            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search

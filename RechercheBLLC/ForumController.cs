@@ -33,7 +33,7 @@ namespace MvcApplication1.Controllers
 
         public ISearchResponse<PostForum> SimpleSearchPostForum(string Keyword, string from, string take)
         {
-            ClassLibrary1.IntParsRTestR ParsRtesR = new ClassLibrary1.IntParsRTestR(from, take);
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
