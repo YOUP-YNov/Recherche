@@ -7,14 +7,23 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using ControllersBll;
+using Nest;
 
 namespace MvcApplication1.Controllers
 {
     public class advancedsearchController : ApiController
     {
-        public bool _place(Place XPlace)
+        public GenericResponse get_place(Place XPlace)
         {
-            return true;
+            //Url parser
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+
+            GenericResponse myReturn = new GenericResponse();
+
+            //Search in Places
+            placesController Pcontroller = new placesController();
+            myReturn.Gplace = Pcontroller.AdvancedSearchPlace(nvc["from"], nvc["take"], nvc["keyword"], nvc["town"]).Documents;
+            return myReturn;
         }
 
         public bool _blog(Blog XBlog)
@@ -37,14 +46,30 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool _profile(Profile XProfile)
+        public GenericResponse get_profile(Profile XProfile)
         {
-            return true;
+            //Url parser
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+
+            GenericResponse myReturn = new GenericResponse();
+            //Search in Profiles
+            profilesController Pcontroller = new profilesController();
+            myReturn.Gprofile = Pcontroller.AdvancedSearchProfile(nvc["from"], nvc["take"], nvc["keyword"], nvc["age"], nvc["pseudo"]).Documents;
+
+            return myReturn;
         }
 
-        public bool _postforul(PostForum XPostForum)
+        public GenericResponse _postforum(PostForum XPostForum)
         {
-            return true;
+            //Url parser
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+
+            GenericResponse myReturn = new GenericResponse();
+            //Search in Profiles
+            forumController Pcontroller = new forumController();
+            myReturn.Gpostforum = Pcontroller.AdvancedSearchForum(nvc["from"], nvc["take"], nvc["keyword"], nvc["author"], nvc["board"], nvc["date"]).Documents;
+
+            return myReturn;
         }
     }
 }

@@ -111,7 +111,7 @@ namespace Tools
                     var dob = user.DateNaissance.Year;
                     int userAge = (int)(now - dob);
                     //Create entity into LUCENE
-                    Profile profileElastic = new Profile(user.Utilisateur_id.ToString(), user.Prenom, user.Nom, user.Pseudo, user.Situation, userAge, user.Sexe);
+                    Profile profileElastic = new Profile(user.Utilisateur_id.ToString(), user.Prenom, user.Nom, user.Pseudo, user.Situation, userAge, user.Sexe, user.Ville);
                     //Index entity
                     var indexU = elastic.Index(profileElastic);
                 }

@@ -15,8 +15,9 @@ namespace RechercheDal
         public string Activity { get; set; }
         public int Age { get; set; }
         public bool Sex { get; set; }
+        public string Town { get; set; }
 
-        public Profile(string _Id, string _Firstname, string _Lastname, string _Pseudo, string _Activity, int _Age, bool _Sex)
+        public Profile(string _Id, string _Firstname, string _Lastname, string _Pseudo, string _Activity, int _Age, bool _Sex, string _Town)
         {
             this.Id = _Id;
             this.Firstname = _Firstname;
@@ -25,6 +26,7 @@ namespace RechercheDal
             this.Activity = _Activity;
             this.Age = _Age;
             this.Sex = _Sex;
+            this.Town = _Town;
         }
 
     }

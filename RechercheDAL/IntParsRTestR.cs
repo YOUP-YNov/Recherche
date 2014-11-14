@@ -16,7 +16,7 @@ namespace RechercheDal
             //Test parameters FROM & SET if null
             if (_a == null) { this.Intfrom = 0; }
             //Else SET parameter From
-            else { }
+            else
             {
                 try
                 { this.Intfrom = Int32.Parse(_a); }
