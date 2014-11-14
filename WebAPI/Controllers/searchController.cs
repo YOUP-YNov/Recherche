@@ -27,21 +27,21 @@ namespace MvcApplication1.Controllers
 
             //Search in Blogs
             blogController Bcontroller = new blogController();
-            Bcontroller.SimpleSearchBlog(nvc["keyword"], nvc["from"], nvc["take"]);
-            Bcontroller.SimpleSearchBlogPost(nvc["keyword"], nvc["from"], nvc["take"]);
-            Bcontroller.SimpleSearchBlogComment(nvc["keyword"], nvc["from"], nvc["take"]);
+            myReturn.Gblog = Bcontroller.SimpleSearchBlog(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
+            myReturn.Gblogpost = Bcontroller.SimpleSearchBlogPost(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
+            myReturn.Gblogpostcomment = Bcontroller.SimpleSearchBlogComment(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
 
             //Search in Events
             eventsController Econtroller = new eventsController();
-            Econtroller.SimpleSearchEvent(nvc["keyword"], nvc["from"], nvc["take"]);
+            myReturn.Gevent = Econtroller.SimpleSearchEvent(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
 
             //Search in Places
             placesController PLcontroller = new placesController();
-            PLcontroller.SimpleSearchPlace(nvc["keyword"], nvc["from"], nvc["take"]);
+            myReturn.Gplace = PLcontroller.SimpleSearchPlace(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
 
             //Search in Forum
             forumController Fcontroller = new forumController();
-            Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]);
+            myReturn.Gpostforum = Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
 
             return myReturn;
 
