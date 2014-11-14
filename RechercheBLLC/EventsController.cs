@@ -51,8 +51,11 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public void AdvancedSearchEvent(string Keyword, string Type, string Where, DateTime Date)
+        public ISearchResponse<Event> AdvancedSearchEvent(string from, string take, string Keyword, string Type, string Where, string Date)
         {
+
+            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -71,7 +74,10 @@ namespace MvcApplication1.Controllers
                                 x.Type, Type))
                        .Query(q =>
                             q.Term(p => p.Name, Keyword))))
-            .Take(20));
+            .From(ParsRtesR.Intfrom)
+            .Take(ParsRtesR.Inttake));
+
+            return searchResults;
         }
 
     }

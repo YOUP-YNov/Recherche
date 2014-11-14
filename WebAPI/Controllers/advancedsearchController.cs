@@ -22,28 +22,33 @@ namespace MvcApplication1.Controllers
 
             //Search in Places
             placesController Pcontroller = new placesController();
-            myReturn.Gplace = Pcontroller.AdvancedSearchPlace(nvc["from"], nvc["take"], nvc["keyword"], nvc["town"]).Documents;
+            myReturn.Gplace = Pcontroller.AdvancedSearchPlace(nvc["from"], nvc["take"], nvc["keyword"], nvc["town"]).Hits;
             return myReturn;
         }
 
-        public bool _blog(Blog XBlog)
+        public GenericResponse get_blog(Blog XBlog)
         {
-            return true;
+            //Url parser
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            blogController Pcontroller = new blogController();
+            
+            GenericResponse myReturn = new GenericResponse();
+            return myReturn;
+
         }
 
-        public bool _blogpost(BlogPost XBlogPost)
+        ///
+        public GenericResponse get_event(Event XEvent)
         {
-            return true;
-        }
+            //Url parser
+            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
 
-        public bool _blogpostcomment(BlogPostComment XBlogPostComment)
-        {
-            return true;
-        }
-
-        public bool _event(Event XEvent)
-        {
-            return true;
+            GenericResponse myReturn = new GenericResponse();
+            //Search in Forum
+            eventsController Pcontroller = new eventsController();
+            myReturn.Gevent = Pcontroller.AdvancedSearchEvent(nvc["from"], nvc["take"], nvc["keyword"], nvc["type"], nvc["town"], nvc["date"]).Hits;
+             
+            return myReturn;
         }
 
         public GenericResponse get_profile(Profile XProfile)
@@ -54,12 +59,12 @@ namespace MvcApplication1.Controllers
             GenericResponse myReturn = new GenericResponse();
             //Search in Profiles
             profilesController Pcontroller = new profilesController();
-            myReturn.Gprofile = Pcontroller.AdvancedSearchProfile(nvc["from"], nvc["take"], nvc["keyword"], nvc["age"], nvc["pseudo"]).Documents;
-
+            myReturn.Gprofile = Pcontroller.AdvancedSearchProfile(nvc["from"], nvc["take"], nvc["keyword"], nvc["age"], nvc["town"]).Hits;
+             
             return myReturn;
         }
 
-        public GenericResponse _postforum(PostForum XPostForum)
+        public GenericResponse get_postforum(PostForum XPostForum)
         {
             //Url parser
             var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
@@ -67,7 +72,7 @@ namespace MvcApplication1.Controllers
             GenericResponse myReturn = new GenericResponse();
             //Search in Profiles
             forumController Pcontroller = new forumController();
-            myReturn.Gpostforum = Pcontroller.AdvancedSearchForum(nvc["from"], nvc["take"], nvc["keyword"], nvc["author"], nvc["board"], nvc["date"]).Documents;
+            myReturn.Gpostforum = Pcontroller.AdvancedSearchForum(nvc["from"], nvc["take"], nvc["keyword"], nvc["author"], nvc["board"], nvc["date"]).Hits;
 
             return myReturn;
         }
