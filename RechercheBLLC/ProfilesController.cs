@@ -42,7 +42,8 @@ namespace MvcApplication1.Controllers
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Inttake)
             .Query(q => q
-            .Term(p => p.Pseudo, keyword)
+                .Term(p => p.Pseudo, keyword)
+
                 )
 
             // Add OR LName - FName
