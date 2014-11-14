@@ -41,9 +41,10 @@ namespace MvcApplication1.Controllers
             var searchResults = client.Search<Profile>(s => s
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Inttake)
-            .Query(q => q
-                .Term(p => p.Pseudo, keyword)
-
+            .Query(q => 
+                q.Term(p => p.Pseudo, keyword)
+                || q.Term(p => p.Firstname, keyword)
+                || q.Term(p => p.Lastname, keyword)
                 )
 
             // Add OR LName - FName

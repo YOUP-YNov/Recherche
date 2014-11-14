@@ -78,8 +78,9 @@ namespace ControllersBll
             var searchResults = client.Search<Blog>(s => s
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Intfrom)
-            .Query(q => q
-            .Term(p => p.Name, keyword)
+            .Query(q => 
+                q.Term(p => p.Name, keyword)
+                || q.Term(p => p.Categorie, keyword)
                 )
             );
             return searchResults;
@@ -94,8 +95,10 @@ namespace ControllersBll
             var searchResults = client.Search<BlogPost>(s => s
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Intfrom)
-            .Query(q => q
-            .Term(p => p.Title, keyword)
+            .Query(q => 
+                q.Term(p => p.Title, keyword)
+                || q.Term(p => p.Content, keyword)
+                || q.Term(p => p.Author, keyword)
                 )
             );
             return searchResults;
@@ -111,8 +114,9 @@ namespace ControllersBll
             var searchResults = client.Search<BlogPostComment>(s => s
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Intfrom)
-            .Query(q => q
-            .Term(p => p.Content, keyword)
+            .Query(q => 
+                q.Term(p => p.Content, keyword)
+                || q.Term(p => p.Author, keyword)
                 )
             );
             return searchResults;

@@ -42,8 +42,9 @@ namespace MvcApplication1.Controllers
             var searchResults = client.Search<Event>(s => s
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Inttake)
-            .Query(q => q
-            .Term(p => p.Name, Keyword)
+            .Query(q => 
+                q.Term(p => p.Name, Keyword)
+                || q.Term(p => p.Adresse, Keyword)
                 )
             );
 

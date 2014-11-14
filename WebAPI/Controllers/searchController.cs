@@ -21,26 +21,26 @@ namespace MvcApplication1.Controllers
             
             //Search in Profiles
             profilesController Pcontroller = new profilesController();
-            myReturn.Gprofile = Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]).Documents;            
+            myReturn.Gprofile = Pcontroller.SimpleSearchProfile(nvc["keyword"], nvc["from"], nvc["take"]).Hits;            
 
             //Search in Blogs
             blogController Bcontroller = new blogController();
-            myReturn.Gblog = Bcontroller.SimpleSearchBlog(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
-            myReturn.Gblogpost = Bcontroller.SimpleSearchBlogPost(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
-            myReturn.Gblogpostcomment = Bcontroller.SimpleSearchBlogComment(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
+            myReturn.Gblog = Bcontroller.SimpleSearchBlog(nvc["keyword"], nvc["from"], nvc["take"]).Hits;
+            myReturn.Gblogpost = Bcontroller.SimpleSearchBlogPost(nvc["keyword"], nvc["from"], nvc["take"]).Hits;
+            myReturn.Gblogpostcomment = Bcontroller.SimpleSearchBlogComment(nvc["keyword"], nvc["from"], nvc["take"]).Hits;
             
 
             //Search in Events
             eventsController Econtroller = new eventsController();
-            myReturn.Gevent = Econtroller.SimpleSearchEvent(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
+            myReturn.Gevent = Econtroller.SimpleSearchEvent(nvc["keyword"], nvc["from"], nvc["take"]).Hits;
 
             //Search in Places
             placesController PLcontroller = new placesController();
-            myReturn.Gplace = PLcontroller.SimpleSearchPlace(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
+            myReturn.Gplace = PLcontroller.SimpleSearchPlace(nvc["keyword"], nvc["from"], nvc["take"]).Hits;
 
             //Search in Forum
             forumController Fcontroller = new forumController();
-            myReturn.Gpostforum = Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]).Documents;
+            myReturn.Gpostforum = Fcontroller.SimpleSearchPostForum(nvc["keyword"], nvc["from"], nvc["take"]).Hits;
 
             return myReturn;
 

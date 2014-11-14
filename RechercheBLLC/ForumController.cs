@@ -40,8 +40,10 @@ namespace MvcApplication1.Controllers
             var searchResults = client.Search<PostForum>(s => s
             .From(ParsRtesR.Intfrom)
             .Size(ParsRtesR.Inttake)
-            .Query(q => q
-            .Term(p => p.content, Keyword)
+            .Query(q => 
+                q.Term(p => p.content, Keyword)
+                || q.Term(p => p.author, Keyword)
+                || q.Term(p => p.board, Keyword)
                 )
             );
 
