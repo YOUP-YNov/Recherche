@@ -44,10 +44,10 @@ namespace MvcApplication1.Tests
         [TestMethod]
         public void TestSearchProfile()
         {
-            Profile ProfileTest = new Profile("800", "Firstname test", "Lastname test", "Profile", "activity test", 20, true);
-            client.Index(ProfileTest);
+            Profile ProfileTest = new Profile("800", "Profile", "Profile", "Profile", "Profile", 20, true);
+           // client.Index(ProfileTest);
 
-            var searchResults = controllerProfile.SimpleSearchProfile("Profile", "0", "1"); //test de la recherche
+            var searchResults = controllerProfile.SimpleSearchProfile("cockanus", "0", "1"); //test de la recherche
             Assert.AreEqual(1, searchResults.Total);
         }
 
@@ -66,7 +66,7 @@ namespace MvcApplication1.Tests
         {
             client.Delete<Event>("800");
             client.Delete<Profile>("800");
-           // client.Delete<Place>("800");
+            client.Delete<Place>("800");
         }
     }
 }
