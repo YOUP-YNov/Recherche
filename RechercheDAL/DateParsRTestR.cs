@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RechercheDal
 {
-    class DateParsRTestR
+    public class DateParsRTestR
     {
-        DateTime? StrDate {get; set; }
+        public DateTime? StrDate {get; set; }
 
         public DateParsRTestR(string _a)
         {
