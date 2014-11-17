@@ -31,15 +31,15 @@ namespace MvcApplication1.Controllers
             AddPostForum(newpostforum);
         }
 
-        public ISearchResponse<PostForum> SimpleSearchPostForum(string Keyword, string from, string take)
+        public ISearchResponse<PostForum> SimpleSearchPostForum(string Keyword, int from, int take)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+         //   IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<PostForum>(s => s
-            .From(ParsRtesR.Intfrom)
-            .Size(ParsRtesR.Inttake)
+            .From(from)
+            .Size(take)
             .Query(q => 
                 q.Term(p => p.content, Keyword)
                 || q.Term(p => p.author, Keyword)

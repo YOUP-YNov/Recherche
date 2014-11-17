@@ -69,15 +69,15 @@ namespace ControllersBll
         }
 
 
-        public ISearchResponse<Blog> SimpleSearchBlog(string keyword, string from, string take)
+        public ISearchResponse<Blog> SimpleSearchBlog(string keyword, int from, int take)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+         //   IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<Blog>(s => s
-            .From(ParsRtesR.Intfrom)
-            .Size(ParsRtesR.Intfrom)
+            .From(from)
+            .Size(take)
             .Query(q => 
                 q.Term(p => p.Name, keyword)
                 || q.Term(p => p.Categorie, keyword)
@@ -86,15 +86,15 @@ namespace ControllersBll
             return searchResults;
         }
 
-        public ISearchResponse<BlogPost> SimpleSearchBlogPost(string keyword, string from, string take)
+        public ISearchResponse<BlogPost> SimpleSearchBlogPost(string keyword, int from, int take)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+           // IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<BlogPost>(s => s
-            .From(ParsRtesR.Intfrom)
-            .Size(ParsRtesR.Intfrom)
+            .From(from)
+            .Size(take)
             .Query(q => 
                 q.Term(p => p.Title, keyword)
                 || q.Term(p => p.Content, keyword)
@@ -105,15 +105,15 @@ namespace ControllersBll
         }
 
 
-        public ISearchResponse<BlogPostComment> SimpleSearchBlogComment(string keyword, string from, string take)
+        public ISearchResponse<BlogPostComment> SimpleSearchBlogComment(string keyword, int from, int take)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+           // IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             //Search
             var searchResults = client.Search<BlogPostComment>(s => s
-            .From(ParsRtesR.Intfrom)
-            .Size(ParsRtesR.Intfrom)
+            .From(from)
+            .Size(take)
             .Query(q => 
                 q.Term(p => p.Content, keyword)
                 || q.Term(p => p.Author, keyword)

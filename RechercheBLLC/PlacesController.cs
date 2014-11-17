@@ -30,16 +30,16 @@ namespace MvcApplication1.Controllers
             AddPlace(newplace);
         }
 
-        public ISearchResponse<Place> SimpleSearchPlace(string keyword, string from, string take)
+        public ISearchResponse<Place> SimpleSearchPlace(string keyword, int from, int take)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+          //  IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             //Search
             var searchResults = client.Search<Place>(s => s
-            .From(ParsRtesR.Intfrom)
-            .Take(ParsRtesR.Inttake)
+            .From(from)
+            .Take(take)
             .Query(q => 
                 q.Term(p => p.Name, keyword)
                 || q.Term(p => p.Town, keyword)

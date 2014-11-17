@@ -32,16 +32,16 @@ namespace MvcApplication1.Controllers
             AddEvent(_newevent);
         }
 
-        public ISearchResponse<Event> SimpleSearchEvent(string Keyword, string from, string take)
+        public ISearchResponse<Event> SimpleSearchEvent(string Keyword, int from, int take)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+         //   IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             //Search
             var searchResults = client.Search<Event>(s => s
-            .From(ParsRtesR.Intfrom)
-            .Size(ParsRtesR.Inttake)
+            .From(from)
+            .Size(take)
             .Query(q => 
                 q.Term(p => p.Name, Keyword)
                 || q.Term(p => p.Adresse, Keyword)
