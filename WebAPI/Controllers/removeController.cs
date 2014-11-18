@@ -12,71 +12,59 @@ namespace MvcApplication1.Controllers
 {
     public class removeController : ApiController
     {
-        public bool get_blog()
+        public bool get_blog(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            Blog XBlog = new Blog(nvc["id"], nvc["content"], nvc["category"]);
+            if (id == "" || id == null) return false;
             blogController controller = new blogController();
-            controller.RemoveBlog(XBlog);
+            controller.RemoveBlog(id);
             return true;
         }
 
-        public bool get_blogpost()
+        public bool get_blogpost(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            BlogPost XBlogPost = new BlogPost(nvc["id"], nvc["content"], nvc["author"], nvc["title"]);
+            if (id == "" || id == null) return false;
             blogController controller = new blogController();
-            controller.RemoveBlogPost(XBlogPost);
+            controller.RemoveBlogPost(id);
             return true;
         }
 
-        public bool get_blogpostcomment()
+        public bool get_blogpostcomment(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            BlogPostComment XBlogPostComment = new BlogPostComment(nvc["id"], nvc["content"], nvc["author"]);
+            if (id == "" || id == null) return false;
             blogController controller = new blogController();
-            controller.RemoveBlogPostComment(XBlogPostComment);
+            controller.RemoveBlogPostComment(id);
             return true;
         }
 
-        public bool get_event()
+        public bool get_event(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            decimal? latitude = decimal.Parse(nvc["latitude"]);
-            decimal? longitude = decimal.Parse(nvc["longitude"]);
-            Place XPlace = new Place(nvc["id"], nvc["name"], nvc["town"], latitude, longitude);
-            Event XEvent = new Event(nvc["id"], nvc["name"], long.Parse(nvc["type"]), DateTime.Parse(nvc["date"]), XPlace, nvc["adresse"]);
+            if (id == "" || id == null) return false;
             eventsController controller = new eventsController();
-            controller.RemoveEvent(XEvent);
+            controller.RemoveEvent(id);
             return true;
         }
 
-        public bool get_place()
+        public bool get_place(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            decimal? latitude = decimal.Parse(nvc["latitude"]);
-            decimal? longitude = decimal.Parse(nvc["longitude"]);
-            Place XPlace = new Place(nvc["id"], nvc["name"], nvc["town"], latitude, longitude);
+            if (id == "" || id == null) return false;
             placesController controller = new placesController();
-            controller.RemovePlace(XPlace);
+            controller.RemovePlace(id);
             return true;
         }
 
-        public bool get_profile()
+        public bool get_profile(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            Profile XProfile = new Profile(nvc["id"], nvc["firstname"], nvc["lastName"], nvc["pseudo"], nvc["activity"], Int32.Parse(nvc["age"]), bool.Parse(nvc["sex"]), nvc["town"]);
+            if (id == "" || id == null) return false;
             profilesController controller = new profilesController();
-            controller.RemoveProfile(XProfile);
+            controller.RemoveProfile(id);
             return true;
         }
 
-        public bool get_postforum()
+        public bool get_postforum(string id = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            PostForum XPostForum = new PostForum(nvc["id"], nvc["board"], nvc["content"], DateTime.Parse(nvc["date"]), nvc["author"]);
+            if (id == "" || id == null) return false;
             forumController controller = new forumController();
-            controller.RemovePostForum(XPostForum);
+            controller.RemovePostForum(id);
             return true;
         }
     }

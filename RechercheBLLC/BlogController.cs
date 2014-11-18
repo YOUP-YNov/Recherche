@@ -29,24 +29,23 @@ namespace ControllersBll
             var index = client.Index(blogpostcomment);
         }
 
-        public void RemoveBlog(Blog blog)
+        public void RemoveBlog(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<Blog>(blog.Id);
+            client.Delete<Blog>(id);
+        }
+
+        public void RemoveBlogPost(string id)
+        {
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            client.Delete<BlogPost>(id);
 
         }
 
-        public void RemoveBlogPost(BlogPost blogpost)
+        public void RemoveBlogPostComment(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<BlogPost>(blogpost.Id);
-
-        }
-
-        public void RemoveBlogPostComment(BlogPostComment blogpostcomment)
-        {
-            ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<BlogPostComment>(blogpostcomment.Id);
+            client.Delete<BlogPostComment>(id);
 
         }
 
@@ -62,8 +61,6 @@ namespace ControllersBll
 
         public void UpdateBlogPost(BlogPost newblogpost)
         {
-           /* RemoveBlogPost(oldblogpost);
-            AddBlogPost(newblogpost);*/
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             var response = client.Update<BlogPost, BlogPost>(u => u
                 .Index("youp")
@@ -74,8 +71,6 @@ namespace ControllersBll
 
         public void UpdateBlogPostComment(BlogPostComment newblogpostcomment)
         {
-           /* RemoveBlogPostComment(oldblogpostcomment);
-            AddBlogPostComment(newblogpostcomment);*/
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             var response = client.Update<BlogPostComment, BlogPostComment>(u => u
                 .Index("youp")

@@ -19,10 +19,10 @@ namespace MvcApplication1.Controllers
             var index = client.Index(postforum);
         }
 
-        public void RemovePostForum(PostForum postforum)
+        public void RemovePostForum(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<PostForum>(postforum.Id);
+            client.Delete<PostForum>(id);
         }
 
         public void UpdatePostForum(PostForum newpostforum)

@@ -20,10 +20,10 @@ namespace MvcApplication1.Controllers
             var index = client.Index(_event);
         }
 
-        public void RemoveEvent(Event _event)
+        public void RemoveEvent(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<Event>(_event.Id);
+            client.Delete<Event>(id);
         }
 
         public void UpdateEvent(Event _newevent)

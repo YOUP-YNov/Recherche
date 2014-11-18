@@ -18,10 +18,10 @@ namespace MvcApplication1.Controllers
             var index = client.Index(place);
         }
 
-        public void RemovePlace(Place place)
+        public void RemovePlace(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<Place>(place.Id);
+            client.Delete<Place>(id);
         }
 
         public void UpdatePlace(Place newplace)

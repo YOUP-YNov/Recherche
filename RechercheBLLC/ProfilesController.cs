@@ -19,10 +19,10 @@ namespace MvcApplication1.Controllers
             var index = client.Index(profile);
         }
 
-        public void RemoveProfile(Profile profile)
+        public void RemoveProfile(string id)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
-            client.Delete<Profile>(profile.Id);
+            client.Delete<Profile>(id);
         }
 
         public void UpdateProfile(Profile newprofile)

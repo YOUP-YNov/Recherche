@@ -38,7 +38,7 @@ namespace MvcApplication1.Tests
             Event newEvent = new Event("700", "Event updated", 1L, new DateTime(2014, 11, 30), PlaceTest, "adresse");
             client.Index(EventTest);
 
-            controllerEvent.UpdateEvent(EventTest, newEvent); //test de la modification
+            controllerEvent.UpdateEvent(newEvent); //test de la modification
 
             var searchResults = client.Search<Event>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (Event hit in searchResults.Hits)
@@ -52,7 +52,7 @@ namespace MvcApplication1.Tests
             Profile newProfile = new Profile("700", "Profile updated", "Lastname test", "pseudo test", "activity test", 20, true, "Ville");
             client.Index(ProfileTest);
 
-            controllerProfile.UpdateProfile(ProfileTest, newProfile); //test de la modification
+            controllerProfile.UpdateProfile(newProfile); //test de la modification
 
             var searchResults = client.Search<Profile>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (Profile hit in searchResults.Hits)
@@ -66,7 +66,7 @@ namespace MvcApplication1.Tests
             Place newPlace = new Place("700", "Lieu updated", "Town", 2, 5);
             client.Index(PlaceTest);
 
-            //controllerPlace.UpdatePlace(PlaceTest, newPlace); //test de la modification
+            controllerPlace.UpdatePlace(newPlace); //test de la modification
 
             var searchResults = client.Search<Place>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (Place hit in searchResults.Hits)
@@ -80,7 +80,7 @@ namespace MvcApplication1.Tests
             PostForum newPostForum = new PostForum("700", "Post updated", "Content", new DateTime(2014, 11, 30), "Author");
             client.Index(PostForumTest);
 
-            controllerForum.UpdatePostForum(PostForumTest, newPostForum); //test de la modification
+            controllerForum.UpdatePostForum(newPostForum); //test de la modification
 
             var searchResults = client.Search<PostForum>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (PostForum hit in searchResults.Hits)
@@ -94,7 +94,7 @@ namespace MvcApplication1.Tests
             Blog newBlog = new Blog("700", "Content", "Blog Updated");
             client.Index(BlogTest);
 
-            controllerBlog.UpdateBlog(BlogTest, newBlog); //test de la modification
+            controllerBlog.UpdateBlog(newBlog); //test de la modification
 
             var searchResults = client.Search<Blog>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (Blog hit in searchResults.Hits)
@@ -108,7 +108,7 @@ namespace MvcApplication1.Tests
             BlogPost newBlogPost = new BlogPost("700", "Content", "Author", "BlogPost updated");
             client.Index(BlogPostTest);
 
-            controllerBlog.UpdateBlogPost(BlogPostTest, newBlogPost); //test de la modification
+            controllerBlog.UpdateBlogPost(newBlogPost); //test de la modification
 
             var searchResults = client.Search<BlogPost>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (BlogPost hit in searchResults.Hits)
@@ -122,7 +122,7 @@ namespace MvcApplication1.Tests
             BlogPostComment newBlogPostComment = new BlogPostComment("700", "content", "BlogPostComment updated");
             client.Index(BlogPostCommentTest);
 
-            controllerBlog.UpdateBlogPostComment(BlogPostCommentTest, newBlogPostComment); //test de la modification
+            controllerBlog.UpdateBlogPostComment(newBlogPostComment); //test de la modification
 
             var searchResults = client.Search<BlogPostComment>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (BlogPostComment hit in searchResults.Hits)
