@@ -39,7 +39,7 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool get_event(string idP="", string nameP="", string town="", decimal latitude=0, decimal longitude=0,
+        public bool get_event(string idP="", string nameP="", string town="", decimal? latitude=0, decimal? longitude=0,
             string idE="", string nameE="", long type=0L, DateTime date = new DateTime(), string adresse="")
         {
             Place XPlace = new Place(idP, nameP, town, latitude, longitude);
@@ -49,7 +49,7 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool get_place(string id = "", string name = "", string town = "", decimal latitude = 0, decimal longitude = 0)
+        public bool get_place(string id = "", string name = "", string town = "", decimal? latitude = 0, decimal? longitude = 0)
         {
             Place XPlace = new Place(id, name, town, latitude, longitude);
             placesController controller = new placesController();

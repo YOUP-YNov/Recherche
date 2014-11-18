@@ -25,10 +25,14 @@ namespace MvcApplication1.Controllers
             client.Delete<Profile>(profile.Id);
         }
 
-        public void UpdateProfile(Profile oldprofile, Profile newprofile)
+        public void UpdateProfile(Profile newprofile)
         {
-            AddProfile(newprofile);
-            RemoveProfile(oldprofile);
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            var response = client.Update<Profile, Profile>(u => u
+                .Index("youp")
+                .Id(newprofile.Id)
+                .Doc(newprofile)
+             );
         }
 
         public ISearchResponse<Profile> SimpleSearchProfile(string keyword, int from, int take)

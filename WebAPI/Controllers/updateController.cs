@@ -12,83 +12,62 @@ namespace MvcApplication1.Controllers
 {
     public class updateController : ApiController
     {
-        public bool get_blog()
+        public bool get_blog(string id="", string content="", string category="")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            Blog XOldBlog = new Blog(nvc["idO"], nvc["contentO"], nvc["categoryO"]);
-            Blog XNewBlog = new Blog(nvc["idN"], nvc["contentN"], nvc["categoryN"]);
+            Blog XNewBlog = new Blog(id, content, category);
             blogController controller = new blogController();
-            controller.UpdateBlog(XOldBlog, XNewBlog);
+            controller.UpdateBlog(XNewBlog);
             return true;
         }
 
-        public bool get_blogpost()
+        public bool get_blogpost(string id="", string content="", string author="", string title="")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            BlogPost XOlgBlogPost = new BlogPost(nvc["idO"], nvc["contentO"], nvc["authorO"], nvc["titleO"]);
-            BlogPost XNewBlogPost = new BlogPost(nvc["idN"], nvc["contentN"], nvc["authorN"], nvc["titleN"]);
+            BlogPost XNewBlogPost = new BlogPost(id, content, author, title);
             blogController controller = new blogController();
-            controller.UpdateBlogPost(XOlgBlogPost, XNewBlogPost);
+            controller.UpdateBlogPost(XNewBlogPost);
             return true;
         }
 
-        public bool get_blogpostcomment()
+        public bool get_blogpostcomment(string id="", string content="", string author="")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            BlogPostComment XOldBlogPostComment = new BlogPostComment(nvc["idO"], nvc["contentO"], nvc["authorO"]);
-            BlogPostComment XNewBlogPostComment = new BlogPostComment(nvc["idN"], nvc["contentN"], nvc["authorN"]);
+            BlogPostComment XNewBlogPostComment = new BlogPostComment(id, content, author);
             blogController controller = new blogController();
-            controller.UpdateBlogPostComment(XOldBlogPostComment, XNewBlogPostComment);
+            controller.UpdateBlogPostComment(XNewBlogPostComment);
             return true;
         }
 
-        public bool get_event()
+        public bool get_event(string idP = "", string nameP = "", string town = "", decimal? latitude = 0, decimal? longitude = 0,
+            string idE = "", string nameE = "", long type = 0L, DateTime date = new DateTime(), string adresse = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            decimal? latitudeO = decimal.Parse(nvc["latitudeO"]);
-            decimal? longitudeO = decimal.Parse(nvc["longitudeO"]);
-            decimal? latitudeN = decimal.Parse(nvc["latitudeN"]);
-            decimal? longitudeN = decimal.Parse(nvc["longitudeN"]);
-            Place XOldPlace = new Place(nvc["idOp"], nvc["nameOp"], nvc["townOp"], latitudeO, longitudeO);
-            Place XNewPlace = new Place(nvc["idNp"], nvc["nameNp"], nvc["townNp"], latitudeO, longitudeO);
-            Event XOldEvent = new Event(nvc["idOe"], nvc["nameOe"], long.Parse(nvc["typeOe"]), DateTime.Parse(nvc["dateOe"]), XOldPlace, nvc["adresseOe"]);
-            Event XNewEvent = new Event(nvc["idNe"], nvc["nameNe"], long.Parse(nvc["typeNe"]), DateTime.Parse(nvc["dateNe"]), XNewPlace, nvc["adresseNe"]);
+            Place XNewPlace = new Place(idP, nameP, town, latitude, longitude);
+            Event XNewEvent = new Event(idE, nameE, type, date, XNewPlace, adresse);
             eventsController controller = new eventsController();
-            controller.UpdateEvent(XOldEvent, XNewEvent);
+            controller.UpdateEvent(XNewEvent);
             return true;
         }
 
-        public bool get_place(string id="", string name="", string town="", decimal latitude=0, decimal longitude=0)
+        public bool get_place(string id="", string name="", string town="", decimal? latitude=0, decimal? longitude=0)
         {
-            /*var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            decimal? latitudeO = decimal.Parse(nvc["latitudeO"]);
-            decimal? longitudeO = decimal.Parse(nvc["longitudeO"]);
-            decimal? latitudeN = decimal.Parse(nvc["latitudeN"]);
-            decimal? longitudeN = decimal.Parse(nvc["longitudeN"]);
-            Place XOldPlace = new Place(nvc["idOp"], nvc["nameOp"], nvc["townOp"], latitudeO, longitudeO);*/
             Place XNewPlace = new Place(id, name, town, latitude, longitude);
             placesController controller = new placesController();
-            controller.UpdatePlace(id, XNewPlace);
+            controller.UpdatePlace(XNewPlace);
             return true;
         }
 
-        public bool get_profile()
+        public bool get_profile(string id = "", string firstname = "", string lastname = "", string pseudo = "", string activity = "",
+            int age = 0, bool sex = true, string town = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            Profile XOldProfile = new Profile(nvc["idO"], nvc["firstnameO"], nvc["lastNameO"], nvc["pseudoO"], nvc["activityO"], Int32.Parse(nvc["ageO"]), bool.Parse(nvc["sexO"]), nvc["townO"]);
-            Profile XNewProfile = new Profile(nvc["idN"], nvc["firstnameN"], nvc["lastNameN"], nvc["pseudoN"], nvc["activityN"], Int32.Parse(nvc["ageN"]), bool.Parse(nvc["sexN"]), nvc["townN"]);
+            Profile XNewProfile = new Profile(id, firstname, lastname, pseudo, activity, age, sex, town);
             profilesController controller = new profilesController();
-            controller.UpdateProfile(XOldProfile, XNewProfile);
+            controller.UpdateProfile(XNewProfile);
             return true;
         }
 
-        public bool get_postforum()
+        public bool get_postforum(string id = "", string board = "", string content = "", DateTime date = new DateTime(), string author = "")
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-            PostForum XOldPostForum = new PostForum(nvc["idO"], nvc["boardO"], nvc["contentO"], DateTime.Parse(nvc["dateO"]), nvc["authorO"]);
-            PostForum XNewPostForum = new PostForum(nvc["idN"], nvc["boardN"], nvc["contentN"], DateTime.Parse(nvc["dateN"]), nvc["authorN"]);
+            PostForum XNewPostForum = new PostForum(id, board, content, date, author);
             forumController controller = new forumController();
-            controller.UpdatePostForum(XOldPostForum, XNewPostForum);
+            controller.UpdatePostForum(XNewPostForum);
             return true;
         }
     }

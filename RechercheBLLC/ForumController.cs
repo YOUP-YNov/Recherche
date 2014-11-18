@@ -25,10 +25,14 @@ namespace MvcApplication1.Controllers
             client.Delete<PostForum>(postforum.Id);
         }
 
-        public void UpdatePostForum(PostForum oldpostforum, PostForum newpostforum)
+        public void UpdatePostForum(PostForum newpostforum)
         {
-            RemovePostForum(oldpostforum);
-            AddPostForum(newpostforum);
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            var response = client.Update<PostForum, PostForum>(u => u
+                .Index("youp")
+                .Id(newpostforum.Id)
+                .Doc(newpostforum)
+             );
         }
 
         public ISearchResponse<PostForum> SimpleSearchPostForum(string keyword, int from, int take)

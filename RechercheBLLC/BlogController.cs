@@ -50,22 +50,38 @@ namespace ControllersBll
 
         }
 
-        public void UpdateBlog(Blog oldblog, Blog newblog)
+        public void UpdateBlog(Blog newblog)
         {
-            RemoveBlog(oldblog);
-            AddBlog(newblog);
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            var response = client.Update<Blog, Blog>(u => u
+                .Index("youp")
+                .Id(newblog.Id)
+                .Doc(newblog)
+             );
         }
 
-        public void UpdateBlogPost(BlogPost oldblogpost, BlogPost newblogpost)
+        public void UpdateBlogPost(BlogPost newblogpost)
         {
-            RemoveBlogPost(oldblogpost);
-            AddBlogPost(newblogpost);
+           /* RemoveBlogPost(oldblogpost);
+            AddBlogPost(newblogpost);*/
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            var response = client.Update<BlogPost, BlogPost>(u => u
+                .Index("youp")
+                .Id(newblogpost.Id)
+                .Doc(newblogpost)
+             );
         }
 
-        public void UpdateBlogPostComment(BlogPostComment oldblogpostcomment, BlogPostComment newblogpostcomment)
+        public void UpdateBlogPostComment(BlogPostComment newblogpostcomment)
         {
-            RemoveBlogPostComment(oldblogpostcomment);
-            AddBlogPostComment(newblogpostcomment);
+           /* RemoveBlogPostComment(oldblogpostcomment);
+            AddBlogPostComment(newblogpostcomment);*/
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            var response = client.Update<BlogPostComment, BlogPostComment>(u => u
+                .Index("youp")
+                .Id(newblogpostcomment.Id)
+                .Doc(newblogpostcomment)
+             );
         }
 
 
