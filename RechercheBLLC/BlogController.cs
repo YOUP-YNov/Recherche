@@ -79,10 +79,10 @@ namespace ControllersBll
             .From(from)
             .Size(take)
             .Query(q => 
-                q.Term(p => p.Name, keyword)
-                || q.Term(p => p.Categorie, keyword)
-                )
-            );
+                q.QueryString(qs => qs
+                .OnFields(p => p.Name, p => p.Categorie)
+                .Query(keyword)
+                )));
             return searchResults;
         }
 
@@ -96,11 +96,10 @@ namespace ControllersBll
             .From(from)
             .Size(take)
             .Query(q => 
-                q.Term(p => p.Title, keyword)
-                || q.Term(p => p.Content, keyword)
-                || q.Term(p => p.Author, keyword)
-                )
-            );
+                q.QueryString(qs => qs
+                .OnFields(p => p.Content, p => p.Author, p => p.Title)
+                .Query(keyword)
+                )));
             return searchResults;
         }
 
@@ -115,10 +114,10 @@ namespace ControllersBll
             .From(from)
             .Size(take)
             .Query(q => 
-                q.Term(p => p.Content, keyword)
-                || q.Term(p => p.Author, keyword)
-                )
-            );
+                q.QueryString(qs => qs
+                .OnFields(p => p.Content, p => p.Author)
+                .Query(keyword)
+                )));
             return searchResults;
 
         }

@@ -31,7 +31,7 @@ namespace MvcApplication1.Controllers
             AddPostForum(newpostforum);
         }
 
-        public ISearchResponse<PostForum> SimpleSearchPostForum(string Keyword, int from, int take)
+        public ISearchResponse<PostForum> SimpleSearchPostForum(string keyword, int from, int take)
         {
          //   IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
@@ -41,11 +41,10 @@ namespace MvcApplication1.Controllers
             .From(from)
             .Size(take)
             .Query(q => 
-                q.Term(p => p.content, Keyword)
-                || q.Term(p => p.author, Keyword)
-                || q.Term(p => p.board, Keyword)
-                )
-            );
+                q.QueryString(qs => qs
+                .OnFields(p => p.content, p => p.author, p => p.board)
+                .Query(keyword)
+                )));
 
             return searchResults;
         }

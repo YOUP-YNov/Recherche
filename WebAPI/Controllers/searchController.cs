@@ -17,6 +17,9 @@ namespace MvcApplication1.Controllers
         public GenericResponse get(string keyword, int from = 0, int take=20)
         {
           //  var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            if(keyword.Contains("%20")){
+                keyword.Replace("%20", " ");
+            }
 
             GenericResponse myReturn = new GenericResponse();
             
@@ -43,6 +46,7 @@ namespace MvcApplication1.Controllers
             myReturn.Gpostforum = Fcontroller.SimpleSearchPostForum(keyword, from, take).Hits;
 
             return myReturn;
+
 
         }
     }

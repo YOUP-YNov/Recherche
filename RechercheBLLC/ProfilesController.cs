@@ -42,13 +42,13 @@ namespace MvcApplication1.Controllers
             .From(from)
             .Size(take)
             .Query(q => 
-                q.Term(p => p.Pseudo, keyword)
-                || q.Term(p => p.Firstname, keyword)
-                || q.Term(p => p.Lastname, keyword)
-                )
+                q.QueryString(qs => qs
+                .OnFields(p => p.Firstname, p => p.Lastname, p => p.Firstname)
+                .Query(keyword)
+                )))
 
             // Add OR LName - FName
-            );
+            ;
 
             return searchResults;
         }
@@ -65,11 +65,11 @@ namespace MvcApplication1.Controllers
                         x.Age, Int32.Parse(age))
                     && filter.Term(x =>
                         x.Town, town))
-                    .Query(q => 
-                        q.Term(p => p.Firstname, keyword)
-                        || q.Term(p => p.Pseudo, keyword)
-                        || q.Term(p => p.Lastname, keyword)  
-                        )
+                    .Query(q =>
+                        q.QueryString(qs => qs
+                        .OnFields(p => p.Firstname, p => p.Lastname, p => p.Firstname)
+                        .Query(keyword)
+                        ))
             .From(ParsRtesR.Intfrom)
             .Take(ParsRtesR.Inttake));
 

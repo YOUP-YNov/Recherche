@@ -41,10 +41,10 @@ namespace MvcApplication1.Controllers
             .From(from)
             .Take(take)
             .Query(q => 
-                q.Term(p => p.Name, keyword)
-                || q.Term(p => p.Town, keyword)
-                )
-            );
+                q.QueryString(qs => qs
+                .OnFields(p => p.Name, p => p.Town)
+                .Query(keyword)
+                )));
             
             return searchResults;
         }

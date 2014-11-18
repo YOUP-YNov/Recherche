@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
             AddEvent(_newevent);
         }
 
-        public ISearchResponse<Event> SimpleSearchEvent(string Keyword, int from, int take)
+        public ISearchResponse<Event> SimpleSearchEvent(string keyword, int from, int take)
         {
          //   IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
@@ -43,10 +43,11 @@ namespace MvcApplication1.Controllers
             .From(from)
             .Size(take)
             .Query(q => 
-                q.Term(p => p.Name, Keyword)
-                || q.Term(p => p.Adresse, Keyword)
-                )
-            );
+                q.QueryString(qs => qs
+                .OnFields(p => p.Name, p => p.Adresse)
+                .Query(keyword)
+                )))
+            ;
 
             return searchResults;
         }
