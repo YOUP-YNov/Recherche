@@ -60,8 +60,10 @@ namespace MvcApplication1.Controllers
                     filter.Term(x =>
                         x.Town, _Location))
                     .Query(q =>
-                        q.Term(p => p.Name, keyword)
-                        )
+                        q.QueryString(qs => qs
+                        .OnFields(p => p.Name)
+                        .Query(keyword)
+                        ))
             .From(ParsRtesR.Intfrom)
             .Take(ParsRtesR.Inttake));
 

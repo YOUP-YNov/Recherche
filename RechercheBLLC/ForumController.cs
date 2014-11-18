@@ -57,17 +57,18 @@ namespace MvcApplication1.Controllers
 
             //advanced search all parameters
             var searchResults = client.Search<PostForum>(body =>
-            body.Query(query =>
-                query.ConstantScore(csq =>
-                    csq.Filter(filter =>
-                            filter.Term(x =>
-                                x.board, Board)
-                            && filter.Term(x =>
-                                x.author, Author)
-                            && filter.Term(x =>
-                                x.date, Date))
-                       .Query(q =>
-                            q.Term(p => p.content, Keyword))))
+                body.Filter(filter =>
+                    filter.Term(x =>
+                        x.board, Board)
+                    && filter.Term(x =>
+                        x.author, Author) 
+                    && filter.Term(x =>
+                        x.date, Date))
+                    .Query(q =>
+                        q.QueryString(qs => qs
+                        .OnFields(p => p.content)
+                        .Query(Keyword)
+                        ))
             .From(ParsRtesR.Intfrom)
             .Take(ParsRtesR.Inttake));
 
