@@ -52,28 +52,29 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<Event> AdvancedSearchEvent(string from, string take, string Keyword, string Type, string where, string Date)
+        public ISearchResponse<Event> AdvancedSearchEvent(string from, string take, string keyword, string type, string town, string date)
         {
 
             IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
-            DateParsRTestR ParsRtesR2 = new DateParsRTestR(Date);
-
-
+            DateParsRTestR ParsRtesR2 = new DateParsRTestR(date);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
-            //advanced search all parameters
+            //Search
             var searchResults = client.Search<Event>(body =>
-            body.Query(query =>
-                query.ConstantScore(csq =>
-                    csq.Filter(filter =>
+                body.Filter(filter =>
                     filter.Term(x =>
-                        x.EPlace.Name, where)
+                        x.Date, ParsRtesR2.StrDate) //filtre date
                     && filter.Term(x =>
-                        x.Date, ParsRtesR2.StrDate))
-                       .Query(q =>
-                            q.Term(p => p.Name, Keyword))))
+                        x.EPlace.Town, town) //filtre ville
+                    && filter.Term(x =>
+                        x.Type, type)) //filtre type
+                    .Query(q =>
+                        q.QueryString(qs => qs
+                        .OnFields(p => p.Name, p => p.Adresse) //keyword pour name et adresse
+                        .Query(keyword)
+                        ))
             .From(ParsRtesR.Intfrom)
             .Take(ParsRtesR.Inttake));
 

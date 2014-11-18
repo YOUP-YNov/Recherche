@@ -34,21 +34,21 @@ namespace MvcApplication1.Tests
         public void TestSearchEvent()
         {
             Place PlaceTest = new Place("80", "Place", "Ville", 2, 4);
-            Event EventTest = new Event("800", "événement", 1L, new DateTime(2014, 11, 30), PlaceTest, "adresse test");
+            Event EventTest = new Event("800", "MyEventTest", 1L, new DateTime(2014, 11, 30), PlaceTest, "adresse test");
             client.Index(EventTest);
 
-          //  var searchResults = controllerEvent.SimpleSearchEvent("événement", "0","1"); //test de la recherche
-           // Assert.AreEqual(1, searchResults.Total);
+            var searchResults = controllerEvent.SimpleSearchEvent("myeventtest", 0, 1); //test de la recherche
+            Assert.AreEqual(1, searchResults.Total);
         }
 
         [TestMethod]
         public void TestSearchProfile()
         {
-            Profile ProfileTest = new Profile("800", "Profile", "Profile", "Profile", "Profile", 20, true, "Ville");
+            Profile ProfileTest = new Profile("800", "firstname t404", "Profile", "Profile", "Profile", 20, true, "Ville");
             client.Index(ProfileTest);
 
-           // var searchResults = controllerProfile.SimpleSearchProfile("Profile", "0", "1"); //test de la recherche
-          //  Assert.AreEqual(1, searchResults.Total);
+            var searchResults = controllerProfile.SimpleSearchProfile("t404", 0, 1); //test de la recherche
+            Assert.AreEqual(1, searchResults.Total);
         }
 
         [TestMethod]
@@ -57,8 +57,8 @@ namespace MvcApplication1.Tests
             Place PlaceTest = new Place("800", "Nomtest", "Ville test", 2, 5);
             client.Index(PlaceTest);
 
-          //  var searchResults = controllerPlace.SimpleSearchPlace("Nomtest", "0", "1"); //test de la recherche
-         //   Assert.AreEqual(1, searchResults.Total);
+            var searchResults = controllerPlace.SimpleSearchPlace("avec plusieurs mot nomtest", 0, 1); //test de la recherche
+            Assert.AreEqual(1, searchResults.Total);
         }
 
         [TestCleanup]

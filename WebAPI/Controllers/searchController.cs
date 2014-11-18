@@ -20,7 +20,7 @@ namespace MvcApplication1.Controllers
             if(keyword.Contains("%20")){
                 keyword.Replace("%20", " ");
             }
-
+            keyword = keyword.ToLower();
             GenericResponse myReturn = new GenericResponse();
             
             //Search in Profiles
