@@ -58,17 +58,17 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
-        public bool get_place()
+        public bool get_place(string id="", string name="", string town="", decimal latitude=0, decimal longitude=0)
         {
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            /*var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
             decimal? latitudeO = decimal.Parse(nvc["latitudeO"]);
             decimal? longitudeO = decimal.Parse(nvc["longitudeO"]);
             decimal? latitudeN = decimal.Parse(nvc["latitudeN"]);
             decimal? longitudeN = decimal.Parse(nvc["longitudeN"]);
-            Place XOldPlace = new Place(nvc["idOp"], nvc["nameOp"], nvc["townOp"], latitudeO, longitudeO);
-            Place XNewPlace = new Place(nvc["idNp"], nvc["nameNp"], nvc["townNp"], latitudeO, longitudeO);
+            Place XOldPlace = new Place(nvc["idOp"], nvc["nameOp"], nvc["townOp"], latitudeO, longitudeO);*/
+            Place XNewPlace = new Place(id, name, town, latitude, longitude);
             placesController controller = new placesController();
-            controller.UpdatePlace(XOldPlace, XNewPlace);
+            controller.UpdatePlace(id, XNewPlace);
             return true;
         }
 

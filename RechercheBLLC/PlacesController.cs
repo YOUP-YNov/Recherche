@@ -24,10 +24,16 @@ namespace MvcApplication1.Controllers
             client.Delete<Place>(place.Id);
         }
 
-        public void UpdatePlace(Place oldplace, Place newplace)
+        public void UpdatePlace(string id, Place newplace)
         {
-            RemovePlace(oldplace);
-            AddPlace(newplace);
+            //RemovePlace(oldplace);
+            //AddPlace(newplace);
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+            var response = client.Update<Place, Place>(u => u
+                .Index("youp")
+                .Id(id)
+                .Doc(newplace)
+             );
         }
 
         public ISearchResponse<Place> SimpleSearchPlace(string keyword, int from, int take)

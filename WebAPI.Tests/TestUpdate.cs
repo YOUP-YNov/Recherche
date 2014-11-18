@@ -66,7 +66,7 @@ namespace MvcApplication1.Tests
             Place newPlace = new Place("700", "Lieu updated", "Town", 2, 5);
             client.Index(PlaceTest);
 
-            controllerPlace.UpdatePlace(PlaceTest, newPlace); //test de la modification
+            //controllerPlace.UpdatePlace(PlaceTest, newPlace); //test de la modification
 
             var searchResults = client.Search<Place>(s => s.Query(q => q.Term(p => p.Id, "700")));
             foreach (Place hit in searchResults.Hits)
