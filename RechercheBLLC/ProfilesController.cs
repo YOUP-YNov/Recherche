@@ -71,7 +71,7 @@ namespace MvcApplication1.Controllers
                         x.Town, town))
                     .Query(q =>
                         q.QueryString(qs => qs
-                        .OnFields(p => p.Firstname, p => p.Lastname, p => p.Firstname)
+                        .OnFields(p => p.Pseudo, p => p.Lastname, p => p.Firstname)
                         .Query(keyword)
                         ))
             .From(ParsRtesR.Intfrom)

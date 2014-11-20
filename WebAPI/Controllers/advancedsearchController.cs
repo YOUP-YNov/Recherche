@@ -13,66 +13,130 @@ namespace MvcApplication1.Controllers
 {
     public class advancedsearchController : ApiController
     {
-        public GenericResponse get_place(Place XPlace)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="from"></param>
+        /// <param name="take"></param>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public GenericResponse get_place(string keyword, string from, string take, string location)
         {
-            //Url parser
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            if (keyword.Contains("%20"))
+            {
+                keyword.Replace("%20", " ");
+            }
+            keyword = keyword.ToLower();
 
             GenericResponse myReturn = new GenericResponse();
 
             //Search in Places
             placesController Pcontroller = new placesController();
-            myReturn.Gplace = Pcontroller.AdvancedSearchPlace(nvc["from"], nvc["take"], nvc["keyword"], nvc["town"]).Hits;
+            myReturn.Gplace = Pcontroller.AdvancedSearchPlace(from, take, keyword, location).Hits;
             return myReturn;
         }
 
-        public GenericResponse get_blog(Blog XBlog)
+        /// <summary>
+        /// Non fonctionnel
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="from"></param>
+        /// <param name="take"></param>
+        /// <param name="author"></param>
+        /// <returns></returns>
+        public GenericResponse get_blog(string keyword, string from, string take, string author)
         {
-            //Url parser
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            if (keyword.Contains("%20"))
+            {
+                keyword.Replace("%20", " ");
+            }
+            keyword = keyword.ToLower();
+
             blogController Pcontroller = new blogController();
-            
+
+            //Search in blog
+
+
             GenericResponse myReturn = new GenericResponse();
             return myReturn;
 
         }
 
-        ///
-        public GenericResponse get_event(Event XEvent)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="take"></param>
+        /// <param name="keyword"></param>
+        /// <param name="type"></param>
+        /// <param name="town"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public GenericResponse get_event(string from, string take, string keyword, string type, string town, string date)
         {
-            //Url parser
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            if (keyword.Contains("%20"))
+            {
+                keyword.Replace("%20", " ");
+            }
+            keyword = keyword.ToLower();
 
             GenericResponse myReturn = new GenericResponse();
             //Search in Forum
             eventsController Pcontroller = new eventsController();
-            myReturn.Gevent = Pcontroller.AdvancedSearchEvent(nvc["from"], nvc["take"], nvc["keyword"], nvc["type"], nvc["town"], nvc["date"]).Hits;
+            myReturn.Gevent = Pcontroller.AdvancedSearchEvent(from, take, keyword, type, town, date).Hits;
              
             return myReturn;
         }
 
-        public GenericResponse get_profile(Profile XProfile)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="take"></param>
+        /// <param name="keyword"></param>
+        /// <param name="age"></param>
+        /// <param name="town"></param>
+        /// <returns></returns>
+        public GenericResponse get_profile(string from, string take, string keyword, string age, string town)
         {
-            //Url parser
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            if (keyword.Contains("%20"))
+            {
+                keyword.Replace("%20", " ");
+            }
+            keyword = keyword.ToLower();
 
             GenericResponse myReturn = new GenericResponse();
+
             //Search in Profiles
             profilesController Pcontroller = new profilesController();
-            myReturn.Gprofile = Pcontroller.AdvancedSearchProfile(nvc["from"], nvc["take"], nvc["keyword"], nvc["age"], nvc["town"]).Hits;
+            myReturn.Gprofile = Pcontroller.AdvancedSearchProfile(from, take, keyword, age, town).Hits;
              
             return myReturn;
         }
 
-        public GenericResponse get_postforum(PostForum XPostForum)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="take"></param>
+        /// <param name="keyword"></param>
+        /// <param name="author"></param>
+        /// <param name="board"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public GenericResponse get_postforum(string from, string take, string keyword, string author, string board, string date)
         {
-            //Url parser
-            var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
+            if (keyword.Contains("%20"))
+            {
+                keyword.Replace("%20", " ");
+            }
+            keyword = keyword.ToLower();
 
             GenericResponse myReturn = new GenericResponse();
             //Search in Profiles
             forumController Pcontroller = new forumController();
-            myReturn.Gpostforum = Pcontroller.AdvancedSearchForum(nvc["from"], nvc["take"], nvc["keyword"], nvc["author"], nvc["board"], nvc["date"]).Hits;
+            myReturn.Gpostforum = Pcontroller.AdvancedSearchForum(from, take, keyword, author, board, date).Hits;
 
             return myReturn;
         }
