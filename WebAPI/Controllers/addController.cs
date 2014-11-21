@@ -15,9 +15,9 @@ namespace MvcApplication1.Controllers
     public class addController : ApiController
     {
 
-        public bool get_blog(string id = "", string content = "", string category = "")
+        public bool get_blog(string id = "", string author = "", string category = "")
         {
-            Blog XBlog = new Blog(id, content, category);
+            Blog XBlog = new Blog(id, author, category);
             blogController controller = new blogController();
             controller.AddBlog(XBlog);
             return true;

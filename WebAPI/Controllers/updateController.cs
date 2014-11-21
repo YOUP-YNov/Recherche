@@ -12,9 +12,9 @@ namespace MvcApplication1.Controllers
 {
     public class updateController : ApiController
     {
-        public bool get_blog(string id="", string content="", string category="")
+        public bool get_blog(string id="", string author="", string category="")
         {
-            Blog XNewBlog = new Blog(id, content, category);
+            Blog XNewBlog = new Blog(id, author, category);
             blogController controller = new blogController();
             controller.UpdateBlog(XNewBlog);
             return true;
