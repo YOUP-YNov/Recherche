@@ -75,7 +75,7 @@ namespace MvcApplication1.Controllers
         /// <param name="adresse"></param>
         /// <returns></returns>
         public bool get_event(string idP="", string nameP="", string town="", decimal? latitude=0, decimal? longitude=0,
-            string idE="", string nameE="", long type=0L, DateTime date = new DateTime(), string adresse="")
+            string idE="", string nameE="", long type=0L, DateTime? date = null, string adresse="")
         {
             Place XPlace = new Place(idP, nameP, town, latitude, longitude);
             Event XEvent = new Event(idE, nameE, type, date, XPlace, adresse);
@@ -131,7 +131,7 @@ namespace MvcApplication1.Controllers
         /// <param name="date"></param>
         /// <param name="author"></param>
         /// <returns></returns>
-        public bool get_postforum(string id="", string board="", string content="", DateTime date = new DateTime(), string author="")
+        public bool get_postforum(string id="", string board="", string content="", DateTime? date = null, string author="")
         {
             PostForum XPostForum = new PostForum(id, board, content, date, author);
             forumController controller = new forumController();
