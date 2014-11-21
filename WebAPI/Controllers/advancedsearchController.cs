@@ -98,14 +98,14 @@ namespace MvcApplication1.Controllers
         /// <param name="age"></param>
         /// <param name="town"></param>
         /// <returns></returns>
-        public GenericResponse get_profile(string from, string take, string keyword, string age, string town)
+        public GenericResponse get_profile(int from=0, int take=20, string keyword="", int? age=null, string town="")
         {
             if (keyword.Contains("%20"))
             {
                 keyword.Replace("%20", " ");
             }
             keyword = keyword.ToLower();
-
+            town = town.ToLower();
             GenericResponse myReturn = new GenericResponse();
 
             //Search in Profiles

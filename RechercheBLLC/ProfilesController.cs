@@ -57,16 +57,16 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<Profile> AdvancedSearchProfile(string from, string take, string keyword, string age, string town)
+        public ISearchResponse<Profile> AdvancedSearchProfile(int from, int take, string keyword, int? age, string town)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+         //   IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
             var searchResults = client.Search<Profile>(body => 
                 body.Filter(filter =>
                     filter.Term(x =>
-                        x.Age, Int32.Parse(age))
+                        x.Age, age)
                     && filter.Term(x =>
                         x.Town, town))
                     .Query(q =>
@@ -74,8 +74,8 @@ namespace MvcApplication1.Controllers
                         .OnFields(p => p.Pseudo, p => p.Lastname, p => p.Firstname)
                         .Query(keyword)
                         ))
-            .From(ParsRtesR.Intfrom)
-            .Take(ParsRtesR.Inttake));
+            .From(from)
+            .Take(take));
 
             return searchResults;
         }
