@@ -56,12 +56,12 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<Event> AdvancedSearchEvent(int from, int take, string keyword, string type, string town, string date)
+        public ISearchResponse<Event> AdvancedSearchEvent(int from, int take, string keyword, string type, string town, DateTime? date)
         {
 
            // IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
-            DateParsRTestR ParsRtesR2 = new DateParsRTestR(date);
+           // DateParsRTestR ParsRtesR2 = new DateParsRTestR(date);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -69,7 +69,7 @@ namespace MvcApplication1.Controllers
             var searchResults = client.Search<Event>(body =>
                 body.Filter(filter =>
                     filter.Term(x =>
-                        x.Date, ParsRtesR2.StrDate) //filtre date
+                        x.Date, date) //filtre date
                     && filter.Term(x =>
                         x.EPlace.Town, town) //filtre ville
                     && filter.Term(x =>

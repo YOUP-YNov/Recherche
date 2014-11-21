@@ -73,7 +73,7 @@ namespace MvcApplication1.Controllers
         /// <param name="town"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public GenericResponse get_event(int from=0, int take=20, string keyword="", string type="", string town="", string date="")
+        public GenericResponse get_event(int from=0, int take=20, string keyword="", string type="", string town="", DateTime? date=null)
         {
             if (keyword.Contains("%20"))
             {
