@@ -56,10 +56,10 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<Event> AdvancedSearchEvent(string from, string take, string keyword, string type, string town, string date)
+        public ISearchResponse<Event> AdvancedSearchEvent(int from, int take, string keyword, string type, string town, string date)
         {
 
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+           // IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             DateParsRTestR ParsRtesR2 = new DateParsRTestR(date);
 
@@ -79,8 +79,8 @@ namespace MvcApplication1.Controllers
                         .OnFields(p => p.Name, p => p.Adresse) //keyword pour name et adresse
                         .Query(keyword)
                         ))
-            .From(ParsRtesR.Intfrom)
-            .Take(ParsRtesR.Inttake));
+            .From(from)
+            .Take(take));
 
             return searchResults;
         }

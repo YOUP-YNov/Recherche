@@ -13,7 +13,13 @@ namespace MvcApplication1.Controllers
 {
     public class searchController : ApiController
     {
-
+        /// <summary>
+        /// Fait une recherche générale dans tout les index grâce au param keyword
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="from"></param>
+        /// <param name="take"></param>
+        /// <returns></returns>
         public GenericResponse get(string keyword, int from = 0, int take=20)
         {
           //  var nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
@@ -49,5 +55,6 @@ namespace MvcApplication1.Controllers
 
 
         }
+
     }
 }

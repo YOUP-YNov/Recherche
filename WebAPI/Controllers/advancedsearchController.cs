@@ -21,14 +21,14 @@ namespace MvcApplication1.Controllers
         /// <param name="take"></param>
         /// <param name="location"></param>
         /// <returns></returns>
-        public GenericResponse get_place(string keyword, string from, string take, string location)
+        public GenericResponse get_place(string keyword="", int from=0, int take=20, string location="")
         {
             if (keyword.Contains("%20"))
             {
                 keyword.Replace("%20", " ");
             }
             keyword = keyword.ToLower();
-
+            location = location.ToLower();
             GenericResponse myReturn = new GenericResponse();
 
             //Search in Places
@@ -52,7 +52,7 @@ namespace MvcApplication1.Controllers
                 keyword.Replace("%20", " ");
             }
             keyword = keyword.ToLower();
-
+           
             blogController Pcontroller = new blogController();
 
             //Search in blog
@@ -73,14 +73,14 @@ namespace MvcApplication1.Controllers
         /// <param name="town"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public GenericResponse get_event(string from, string take, string keyword, string type, string town, string date)
+        public GenericResponse get_event(int from=0, int take=20, string keyword="", string type="", string town="", string date="")
         {
             if (keyword.Contains("%20"))
             {
                 keyword.Replace("%20", " ");
             }
             keyword = keyword.ToLower();
-
+            town = town.ToLower();
             GenericResponse myReturn = new GenericResponse();
             //Search in Forum
             eventsController Pcontroller = new eventsController();
