@@ -52,9 +52,16 @@ namespace MvcApplication1.Controllers
             myReturn.Gpostforum = Fcontroller.SimpleSearchPostForum(keyword, from, take).Hits;
 
             return myReturn;
-
-
         }
 
+        public GenericResponse get_closeevents(double latitude = 0, double longitude = 0)
+        {
+            GenericResponse myReturn = new GenericResponse();
+
+            eventsController Econtroller = new eventsController();
+            myReturn.Gevent = Econtroller.searchCloseEvents(latitude, longitude).Hits;
+            return myReturn;
+        }
+        
     }
 }

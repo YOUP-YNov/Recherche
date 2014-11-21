@@ -11,11 +11,11 @@ namespace RechercheDal
         public string Id { get; set; }
         public string board { get; set; }
         public string content { get; set; }
-        public DateTime date { get; set; }
+        public DateTime? date { get; set; }
         public string author { get; set; }
 
 
-        public PostForum(string _Id, string _board, string _content, DateTime _date, string _author)
+        public PostForum(string _Id, string _board, string _content, DateTime? _date, string _author)
         {
             this.Id = _Id;
             this.board = _board;

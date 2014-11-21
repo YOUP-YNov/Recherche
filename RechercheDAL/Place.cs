@@ -14,6 +14,7 @@ namespace RechercheDal
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
 
+
         public Place(string _Id, string _Name, string _Town, decimal? _Latitude, decimal? _Longitude)
         {
             this.Id = _Id;
@@ -22,5 +23,8 @@ namespace RechercheDal
             this.Latitude = _Latitude;
             this.Longitude = _Longitude;
         }
+
+
     }
+
 }

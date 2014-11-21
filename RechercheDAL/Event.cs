@@ -15,7 +15,8 @@ namespace RechercheDal
         public DateTime? Date { get; set; }
         public Place EPlace { get; set; }
         public string Adresse { get; set; }
-        // public string Timeslot { get; set; }
+        public Location location { get; set; }
+
 
         public Event(string _Id, string _Name, long _Type, DateTime? _Date, Place _EPlace, string _Adresse)
         {
@@ -25,7 +26,12 @@ namespace RechercheDal
             this.Adresse = _Adresse;
             this.Date = _Date;
             this.EPlace = _EPlace;
-            // this.Timeslot = _Timeslot;
+            try
+            {
+
+                this.location = new Location((double)this.EPlace.Latitude.GetValueOrDefault(), (double)10);
+            }
+            catch (Exception e) { }
         }
 
     }
