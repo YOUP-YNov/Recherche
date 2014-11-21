@@ -74,8 +74,10 @@ namespace MvcApplication1.Controllers
         /// <param name="date"></param>
         /// <param name="adresse"></param>
         /// <returns></returns>
-        public bool get_event(string idP = "", string nameP = "", string town = "", decimal? latitude = 0, decimal? longitude = 0,
-            string idE="", string nameE="", long type=0L, DateTime date = new DateTime(), string adresse="")
+
+
+        public bool get_event(string idP="", string nameP="", string town="", decimal? latitude=0, decimal? longitude=0,
+            string idE="", string nameE="", long type=0L, DateTime? date = null, string adresse="")
         {
             Place XPlace = new Place(idP, nameP, town, latitude, longitude);
             Event XEvent = new Event(idE, nameE, type, date, XPlace, adresse);

@@ -125,7 +125,7 @@ namespace MvcApplication1.Controllers
         /// <param name="board"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public GenericResponse get_postforum(string from, string take, string keyword, string author, string board, string date)
+        public GenericResponse get_postforum(int from=0, int take=20, string keyword="", string author="", string board="", DateTime? date=null)
         {
             if (keyword.Contains("%20"))
             {
