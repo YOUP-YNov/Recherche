@@ -18,6 +18,16 @@ namespace MvcApplication1.Controllers
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
             var index = client.Index(_event);
+            /*
+            try
+            {
+                client.CreateIndex(s => s
+                    .AddMapping<Event>(f => f
+                        .MapFromAttributes()
+                        .Properties(p => p
+                            .GeoPoint(g => g.Name(n => n.location).IndexLatLon()))));
+            }
+            catch (Exception e) { }*/
         }
 
         public void RemoveEvent(string id)
@@ -56,12 +66,12 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<Event> AdvancedSearchEvent(string from, string take, string keyword, string type, string town, string date)
+        public ISearchResponse<Event> AdvancedSearchEvent(int from, int take, string keyword, string type, string town, DateTime? date)
         {
 
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+           // IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
-            DateParsRTestR ParsRtesR2 = new DateParsRTestR(date);
+           // DateParsRTestR ParsRtesR2 = new DateParsRTestR(date);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -69,7 +79,7 @@ namespace MvcApplication1.Controllers
             var searchResults = client.Search<Event>(body =>
                 body.Filter(filter =>
                     filter.Term(x =>
-                        x.Date, ParsRtesR2.StrDate) //filtre date
+                        x.Date, date) //filtre date
                     && filter.Term(x =>
                         x.EPlace.Town, town) //filtre ville
                     && filter.Term(x =>
@@ -79,11 +89,28 @@ namespace MvcApplication1.Controllers
                         .OnFields(p => p.Name, p => p.Adresse) //keyword pour name et adresse
                         .Query(keyword)
                         ))
-            .From(ParsRtesR.Intfrom)
-            .Take(ParsRtesR.Inttake));
+            .From(from)
+            .Take(take));
 
             return searchResults;
         }
 
+        public ISearchResponse<Event> searchCloseEvents(double latitude, double longitude)
+        {
+
+            ElasticClient client = YoupElasticSearch.InitializeConnection();
+
+            //search close events
+            var searchResults = client.Search<Event>(s => s
+                .Filter(f => f
+                    .GeoDistance(c => c.location, d => d.Distance(20, GeoUnit.Kilometers).Location(latitude, longitude)))
+                .Query(q => q
+                    .MatchAll())
+                .From(0)
+                .Take(20));
+
+            return searchResults;
+        }
+        
     }
 }

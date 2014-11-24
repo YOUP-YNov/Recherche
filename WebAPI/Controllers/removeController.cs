@@ -12,6 +12,11 @@ namespace MvcApplication1.Controllers
 {
     public class removeController : ApiController
     {
+        /// <summary>
+        /// Supprime un blog
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_blog(string id = "")
         {
             if (id == "" || id == null) return false;
@@ -20,6 +25,11 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
+        /// <summary>
+        /// supprime un blog post
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_blogpost(string id = "")
         {
             if (id == "" || id == null) return false;
@@ -28,6 +38,11 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
+        /// <summary>
+        /// supprime un blogpostcomment
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_blogpostcomment(string id = "")
         {
             if (id == "" || id == null) return false;
@@ -36,6 +51,11 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
+        /// <summary>
+        /// supprime un event
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_event(string id = "")
         {
             if (id == "" || id == null) return false;
@@ -44,6 +64,11 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
+        /// <summary>
+        /// supprime un lieu
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_place(string id = "")
         {
             if (id == "" || id == null) return false;
@@ -52,6 +77,11 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
+        /// <summary>
+        /// supprime un profile
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_profile(string id = "")
         {
             if (id == "" || id == null) return false;
@@ -60,6 +90,11 @@ namespace MvcApplication1.Controllers
             return true;
         }
 
+        /// <summary>
+        /// supprime un post forum
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool get_postforum(string id = "")
         {
             if (id == "" || id == null) return false;

@@ -145,6 +145,9 @@ namespace Tools
                     Event eventElastic = new Event(_event.Evenement_id.ToString(), _event.TitreEvenement, _event.Categorie_id, _event.DateEvenement, eventPlace, _event.EVE_LieuEvenement.Adresse);
                     //Index entity
                     var indexES = elastic.Index(eventElastic);
+
+
+
                 }
             }
             return true;

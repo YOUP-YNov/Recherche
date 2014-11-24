@@ -53,6 +53,7 @@
     <Compile Include="Event.cs" />
     <Compile Include="GenericResponse.cs" />
     <Compile Include="IntParsRTestR.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="PostForum.cs" />
     <Compile Include="Profile.cs" />

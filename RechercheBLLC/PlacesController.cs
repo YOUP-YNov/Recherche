@@ -53,11 +53,11 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<Place> AdvancedSearchPlace(string from, string take, string keyword, string _Location)
+        public ISearchResponse<Place> AdvancedSearchPlace(int from, int take, string keyword, string _Location)
         {
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+          //  IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             var searchResults = client.Search<Place>(body =>
                 body.Filter(filter =>
@@ -68,8 +68,8 @@ namespace MvcApplication1.Controllers
                         .OnFields(p => p.Name)
                         .Query(keyword)
                         ))
-            .From(ParsRtesR.Intfrom)
-            .Take(ParsRtesR.Inttake));
+            .From(from)
+            .Take(take));
 
             return searchResults;
         }

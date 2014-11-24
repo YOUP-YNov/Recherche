@@ -53,9 +53,9 @@ namespace MvcApplication1.Controllers
             return searchResults;
         }
 
-        public ISearchResponse<PostForum> AdvancedSearchForum(string from, string take, string Keyword, string Author, string Board, string Date)
+        public ISearchResponse<PostForum> AdvancedSearchForum(int from, int take, string Keyword, string Author, string Board, DateTime? Date)
         {
-            IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
+            //IntParsRTestR ParsRtesR = new IntParsRTestR(from, take);
 
             ElasticClient client = YoupElasticSearch.InitializeConnection();
 
@@ -73,8 +73,8 @@ namespace MvcApplication1.Controllers
                         .OnFields(p => p.content)
                         .Query(Keyword)
                         ))
-            .From(ParsRtesR.Intfrom)
-            .Take(ParsRtesR.Inttake));
+            .From(from)
+            .Take(take));
 
             return searchResults;
         }
