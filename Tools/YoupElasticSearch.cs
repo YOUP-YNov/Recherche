@@ -13,7 +13,7 @@ namespace Tools
             public static ElasticClient InitializeConnection()
             {
                 //Getting node
-                string uri = System.IO.File.ReadAllText(@"elasticsearchUri.txt");
+                string uri = System.IO.File.ReadAllText(@"C:\ConfigYoup\Recherche\elasticsearchUri.txt");
 
                 //Saving Node
                 var node = new Uri(uri);
