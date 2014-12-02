@@ -12,8 +12,11 @@ namespace Tools
             //Method InitializeConnection : Explicit
             public static ElasticClient InitializeConnection()
             {
+                //Getting node
+                string uri = System.IO.File.ReadAllText(@"elasticsearchUri.txt");
+
                 //Saving Node
-                var node = new Uri("http://martinleguillou.fr:1194/");
+                var node = new Uri(uri);
                 //Saving Settings
                 var settings = new ConnectionSettings(
                     node,
